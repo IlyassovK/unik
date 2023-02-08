@@ -8,7 +8,7 @@ import com.example.students.utils.Resource
 import timber.log.Timber
 
 class LoginUseCase(
-    private val loginRepository: LoginRepository
+    private val loginRepository: LoginRepository,
 ) {
     suspend fun login(request: LoginRequest): Resource<LoginResponse> {
         return loginRepository.login(request)

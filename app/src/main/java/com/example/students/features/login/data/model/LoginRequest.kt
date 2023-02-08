@@ -6,5 +6,7 @@ data class LoginRequest(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("password")
-    val password: String
+    val password: String,
+    @SerializedName("code")
+    val code: String,
 )

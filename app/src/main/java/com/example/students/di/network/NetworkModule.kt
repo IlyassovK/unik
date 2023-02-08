@@ -12,7 +12,7 @@ import org.koin.java.KoinJavaComponent.inject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "http://35.87.22.29/"
+const val BASE_URL = "http://54.214.52.150/"
 
 val networkModule = module {
     single { provideRetrofit() }

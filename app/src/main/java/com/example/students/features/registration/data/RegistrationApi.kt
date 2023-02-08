@@ -9,5 +9,4 @@ import retrofit2.http.POST
 interface RegistrationApi {
     @POST("/api/user")
     suspend fun registration(@Body request: RegistrationRequest): Response<RegistrationResponse>
-
 }

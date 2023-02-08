@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_login" />
-
-    <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/feedFragment"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_login" />
+        android:title="@string/main_screen_feed" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_login" />
+        android:id="@+id/messangerFragment"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/main_screen_messenger" />
+
+    <item
+        android:id="@+id/contactFragment"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/main_screen_contact" />
+    <item
+        android:id="@+id/mapFragment"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/main_screen_map" />
 
 </menu>

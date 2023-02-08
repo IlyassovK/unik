@@ -10,7 +10,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val loginModule = module {
-    viewModel { LoginViewModel(loginUseCase = get()) }
+    viewModel { LoginViewModel(loginUseCase = get(), otpUseCase = get()) }
     single<LoginRepository> { LoginRepositoryImpl(preferences = get(), loginApi = get()) }
     single { get<Retrofit>().create(LoginApi::class.java) }
     single{ LoginUseCase(loginRepository = get()) }

@@ -11,7 +11,7 @@ import java.lang.Exception
 
 class RegistrationRepositoryImpl(
     private val preferences: GlobalPreferences,
-    private val registrationApi: RegistrationApi
+    private val registrationApi: RegistrationApi,
 ) : RegistrationRepository {
 
     override suspend fun registration(request: RegistrationRequest): Resource<RegistrationResponse> {
