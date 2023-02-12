@@ -8,6 +8,8 @@ import android.graphics.Color
 import android.graphics.PointF
 import android.location.Location
 import android.location.LocationManager
+import android.location.LocationManager.GPS_PROVIDER
+import android.location.LocationManager.NETWORK_PROVIDER
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
@@ -29,7 +31,9 @@ import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.layers.ObjectEvent
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.IconStyle
+import com.yandex.mapkit.map.Map
 import com.yandex.mapkit.map.RotationType
+import com.yandex.mapkit.mapview.MapView
 import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
@@ -42,6 +46,7 @@ class MapFragment : Fragment(), UserLocationObjectListener {
     private lateinit var locationProviderClient: FusedLocationProviderClient
     private val viewModel: MapViewModel by viewModels()
     private lateinit var userLocationLayer: UserLocationLayer
+    private lateinit var yandexMapView: MapView
 
     private val locationPermissionRequest = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -85,12 +90,13 @@ class MapFragment : Fragment(), UserLocationObjectListener {
                             longitude = location.longitude
                         )
 
+                        Log.d("KRM:", "${location.latitude}, ${location.longitude}")
 
-//                        binding.mapView.map.move(
-//                            CameraPosition(Point(viewModel.lastLocation.latitude,
-//                                viewModel.lastLocation.longitude), 11.0f, 0.0f, 0.0f),
-//                            Animation(Animation.Type.SMOOTH, 10f),
-//                            null)
+                        yandexMapView.map.move(
+                            CameraPosition(Point(viewModel.lastLocation.latitude,
+                                viewModel.lastLocation.longitude), 20.0f, 0.0f, 0.0f),
+                            Animation(Animation.Type.SMOOTH, 10f),
+                            null)
                     }
                 }
             } else {
@@ -130,38 +136,47 @@ class MapFragment : Fragment(), UserLocationObjectListener {
                     latitude = it.latitude,
                     longitude = it.longitude
                 )
-                Log.d("KRM:", "location 2 ${viewModel.lastLocation}")
 
-                binding.mapView.map.move(
-                    CameraPosition(Point(viewModel.lastLocation.latitude,
-                        viewModel.lastLocation.longitude), 11.0f, 0.0f, 0.0f),
-                    Animation(Animation.Type.SMOOTH, 1000f),
-                    null)
+//                yandexMap.move(
+//                    CameraPosition(Point(viewModel.lastLocation.latitude,
+//                        viewModel.lastLocation.longitude), 1.0f, 0.0f, 0.0f),
+//                    Animation(Animation.Type.LINEAR, 1000f),
+//                    null)
             }
         }
     }
 
     private fun isLocationEnabled(): Boolean {
         val locationManager =
-            requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-            LocationManager.NETWORK_PROVIDER)
+            requireContext().getSystemService(Context.LOCATION_SERVICE) as android.location.LocationManager
+        return locationManager.isProviderEnabled(GPS_PROVIDER) || locationManager.isProviderEnabled(
+            NETWORK_PROVIDER)
     }
 
     private fun initMap() {
         MapKitFactory.initialize(requireActivity())
         locationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        yandexMapView = binding.mapView
         val mapKit = MapKitFactory.getInstance()
-        mapKit.resetLocationManagerToDefault()
-        userLocationLayer = mapKit.createUserLocationLayer(binding.mapView.mapWindow);
-        userLocationLayer.isVisible = true;
-        userLocationLayer.isHeadingEnabled = true;
+//        mapKit.resetLocationManagerToDefault()
+//
+//        /** add placemark */
+//        val lat = 43.2220
+//        val lng = 76.8560
+//        val placemark = yandexMapView.map.mapObjects.addPlacemark(Point(lat, lng))
+//        placemark.setIcon(ImageProvider.fromResource(requireContext(), R.drawable.icv_map_marker))
+//        placemark.isDraggable = true
+//        placemark.setText("Placemark Title")
 
-        userLocationLayer.setObjectListener(this);
+        userLocationLayer = mapKit.createUserLocationLayer(yandexMapView.mapWindow);
+        userLocationLayer.isVisible = true
+        userLocationLayer.isHeadingEnabled = true
+
+        userLocationLayer.setObjectListener(this)
     }
 
     override fun onStop() {
-        binding.mapView.onStop()
+        yandexMapView.onStop()
         MapKitFactory.getInstance().onStop()
         super.onStop()
     }
@@ -169,17 +184,19 @@ class MapFragment : Fragment(), UserLocationObjectListener {
     override fun onStart() {
         super.onStart()
         MapKitFactory.getInstance().onStart()
-        binding.mapView.onStart()
+        yandexMapView.onStart()
     }
 
     override fun onObjectAdded(userLocationView: UserLocationView) {
         userLocationLayer.setAnchor(
-            PointF((binding.mapView.width * 0.5).toFloat(),
-                (binding.mapView.height * 0.5).toFloat()),
-            PointF((binding.mapView.width * 0.5).toFloat(),
-                (binding.mapView.height * 0.83).toFloat()))
+            PointF((yandexMapView.width * 0.5).toFloat(),
+                (yandexMapView.height * 0.5).toFloat()),
+            PointF((yandexMapView.width * 0.5).toFloat(),
+                (yandexMapView.height * 0.83).toFloat()))
+
         userLocationView.arrow.setIcon(ImageProvider.fromResource(
             requireContext(), R.drawable.icv_user_arrow))
+
         val pinIcon = userLocationView.pin.useCompositeIcon()
         pinIcon.setIcon(
             "icon",
