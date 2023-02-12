@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="MainButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_main_btn</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/color_main_light</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+</resources>
