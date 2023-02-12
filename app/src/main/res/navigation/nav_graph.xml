@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/mapFragment">
+    app:startDestination="@+id/splashFragment">
 
     <fragment
         android:id="@+id/navigation_login"
@@ -51,5 +51,28 @@
         android:name="com.example.students.features.map.presentation.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.students.features.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.example.students.features.onboarding.presentation.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboardingFragment_to_navigation_login"
+            app:destination="@id/navigation_login"
+            app:popUpTo="@+id/main_nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
