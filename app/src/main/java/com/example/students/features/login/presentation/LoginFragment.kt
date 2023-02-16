@@ -1,8 +1,11 @@
 package com.example.students.features.login.presentation
 
 import android.os.Bundle
+import android.os.TokenWatcher
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -13,12 +16,15 @@ import com.example.students.R
 import com.example.students.databinding.FragmentLoginBinding
 import com.example.students.features.form.presentation.FormViewModel
 import com.example.students.features.login.data.model.LoginRequest
+import com.example.students.utils.PhoneTextWatcher
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private val binding by viewBinding(FragmentLoginBinding::bind)
     private val viewModel: LoginViewModel by viewModel()
+
+    private lateinit var phoneTextWatcher: TextWatcher
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,7 +38,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             button.setOnClickListener {
                 if (isFieldsValid()) {
                     viewModel.login(
-                        phone = binding.phoneEditText.text.toString(),
+                        phone = viewModel.phoneField,
                         password = binding.passwordEditText.text.toString()
                     )
                 }
@@ -41,6 +47,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             goRegistration.setOnClickListener {
                 findNavController().navigate(R.id.action_navigation_login_to_registrationFragment)
             }
+
+            phoneTextWatcher = PhoneTextWatcher(requireContext(), phoneEditText) {
+                viewModel.phoneField = it
+            }
+
+            phoneEditText.addTextChangedListener(phoneTextWatcher)
         }
     }
 
@@ -75,4 +87,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.apply {
+            phoneEditText.removeTextChangedListener(phoneTextWatcher)
+        }
+    }
 }
