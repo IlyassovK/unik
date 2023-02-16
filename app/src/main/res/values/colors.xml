@@ -16,6 +16,10 @@
     <color name="color_secondary_light">#FFA18FCA</color>
     <color name="color_error">#FFF67676</color>
 
-    
     <color name="color_background">#FF6918E3</color>
+
+    //temp colors
+    <color name="colorEditTextHintNew">#848D98</color>
+    <color name="colorEditTextCursorNew">#386AB5</color>
+
 </resources>

@@ -7,6 +7,7 @@ import com.example.students.features.login.data.model.LoginRequest
 import com.example.students.features.login.domain.usecase.LoginUseCase
 import com.example.students.features.otp.domain.OtpUseCase
 import com.example.students.utils.isSuccessful
+import com.example.students.utils.phoneNumberToRaw
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -20,6 +21,11 @@ class LoginViewModel(
     private val _state: MutableStateFlow<LoginScreenState> =
         MutableStateFlow(LoginScreenState.Loading)
     val state: StateFlow<LoginScreenState> = _state
+
+    var phoneField = ""
+        get() {
+            return field.phoneNumberToRaw()
+        }
 
     fun login(phone: String, password: String) {
         viewModelScope.launch {
