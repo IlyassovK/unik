@@ -1,9 +1,10 @@
-package com.example.students.utils
+package com.example.students.utils.ui
 
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import com.example.students.utils.cursorToEnd
 
 class PhoneTextWatcher(
     val context: Context,

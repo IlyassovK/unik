@@ -16,10 +16,21 @@
     <color name="color_secondary_light">#FFA18FCA</color>
     <color name="color_error">#FFF67676</color>
 
-    <color name="color_background">#FF6918E3</color>
+    <color name="color_background">#FFF4F6F8</color>
 
     //temp colors
     <color name="colorEditTextHintNew">#848D98</color>
     <color name="colorEditTextCursorNew">#386AB5</color>
+    <color name="colorButtonRipple">#1F000000</color>
+    <color name="colorCloseTint">#0D213A</color>
+
+    <color name="colorTextViewTitleNew">#29313A</color>
+    <color name="colorTextViewRegularNew">#67707C</color>
+    <color name="colorTextViewRegularSmallNew">#8B929B</color>
+    <color name="colorTextViewLight">#9194A1</color>
+    <color name="colorPageBackgroundNew">#F4F6F8</color>
+    <color name="colorPageBackgroundDarkNew">#1C2229</color>
+    <color name="colorToolbarBackgroundDarkNew">#333B47</color>
+    <color name="colorEditTextNew">#333B47</color>
 
 </resources>

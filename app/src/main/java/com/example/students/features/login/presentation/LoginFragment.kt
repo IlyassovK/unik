@@ -1,24 +1,18 @@
 package com.example.students.features.login.presentation
 
 import android.os.Bundle
-import android.os.TokenWatcher
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.students.R
 import com.example.students.databinding.FragmentLoginBinding
-import com.example.students.features.form.presentation.FormViewModel
-import com.example.students.features.login.data.model.LoginRequest
-import com.example.students.utils.PhoneTextWatcher
+import com.example.students.utils.ui.PhoneTextWatcher
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private val binding by viewBinding(FragmentLoginBinding::bind)
