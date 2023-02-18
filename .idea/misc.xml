@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/icv_person.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/icv_user_arrow.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_btn_primary.xml" value="0.174" />
+        <entry key="app/src/main/res/layout/activity_authorization.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/fragment_form.xml" value="0.2262374877929688" />

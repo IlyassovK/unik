@@ -31,7 +31,7 @@ class SplashFragment : Fragment() {
             findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
             prefs.firstStartHappened()
         } else {
-            findNavController().navigate(R.id.action_splashFragment_to_navigation_login)
+            findNavController().navigate(R.id.action_splashFragment_to_navigation_registration)
         }
     }
 
