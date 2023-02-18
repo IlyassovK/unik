@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.students.R
 import com.example.students.databinding.FragmentRegistrationBinding
-import com.example.students.utils.PhoneTextWatcher
+import com.example.students.utils.ui.PhoneTextWatcher
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
