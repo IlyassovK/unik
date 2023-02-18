@@ -1,5 +1,7 @@
 package com.example.students
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -27,5 +29,9 @@ class MainActivity : AppCompatActivity() {
                 binding.navView.visibility = View.VISIBLE
             }
         }
+    }
+
+    companion object {
+        fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 }

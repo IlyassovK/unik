@@ -27,7 +27,7 @@ class OnboardingFragment : Fragment() {
         binding.apply {
             nextButton.setOnClickListener {
                 findNavController().navigate(
-                    R.id.action_onboardingFragment_to_navigation_login
+                    R.id.action_onboardingFragment_to_navigation_registration
                 )
             }
         }
