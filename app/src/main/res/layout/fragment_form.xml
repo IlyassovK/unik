@@ -257,7 +257,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.example.students.utils.ui.ProgressButton
+        <com.example.students.utils.ui.customViews.ProgressButton
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

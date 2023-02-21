@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_navigation_login_to_registrationFragment"
             app:destination="@id/navigation_registration" />
+        <action
+            android:id="@+id/action_navigation_login_to_otpFragment"
+            app:destination="@id/otpFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_registration"
@@ -48,6 +51,9 @@
         <action
             android:id="@+id/action_registrationFragment_to_formFragment"
             app:destination="@id/navigation_form" />
+        <action
+            android:id="@+id/action_navigation_registration_to_otpFragment"
+            app:destination="@id/otpFragment" />
     </fragment>
 
     <fragment
@@ -55,5 +61,14 @@
         android:name="com.example.students.features.form.presentation.FormFragment"
         android:label="FormFragment"
         tools:layout="@layout/fragment_form">
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.students.features.auth.otp.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_navigation_form"
+            app:destination="@id/navigation_form" />
     </fragment>
 </navigation>

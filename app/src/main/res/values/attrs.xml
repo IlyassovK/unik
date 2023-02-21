@@ -6,4 +6,9 @@
         <attr name="buttonStyle" format="reference" />
         <attr name="layout" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="OtpView">
+        <attr name="isAutofillEnable" format="boolean" />
+        <attr name="isFocusEnabled" format="boolean" />
+    </declare-styleable>
 </resources>

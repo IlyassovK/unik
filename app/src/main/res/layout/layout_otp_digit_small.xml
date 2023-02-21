@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.students.utils.ui.customViews.DigitEditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/otp__digit"
+    style="@style/EditTextDigitSmall"
+    android:includeFontPadding="false" />

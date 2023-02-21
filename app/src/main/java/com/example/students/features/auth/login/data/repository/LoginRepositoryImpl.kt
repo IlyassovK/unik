@@ -20,8 +20,10 @@ class LoginRepositoryImpl(
                 request = request
             )
             if (result.isSuccessful) {
-                val responseBody = result.body()
-                preferences.setAccessToken(responseBody!!.accessToken)
+                val responseBody = result.body()!!
+//                preferences.setAccessToken(responseBody.tokenData.original.accessToken)
+//                preferences.setUserId(responseBody.id)
+
                 Resource.success(responseBody)
             } else {
                 Resource.error(NetworkExceptions.BadRequest(result.message()))
