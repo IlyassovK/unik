@@ -2,6 +2,7 @@ package com.example.students.features.auth.registration.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.students.features.auth.AuthViewModel.Companion.DEFAULT_CODE
 import com.example.students.features.auth.registration.data.model.RegistrationRequest
 import com.example.students.features.auth.registration.domain.RegistrationUseCase
 import com.example.students.utils.phoneNumberToRaw
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class RegistrationViewModel(
-    private val registrationUseCase: RegistrationUseCase
+    private val registrationUseCase: RegistrationUseCase,
 ) : ViewModel() {
 
     private val _state: MutableStateFlow<RegistrationScreenState> =
@@ -23,14 +24,17 @@ class RegistrationViewModel(
             return field.phoneNumberToRaw()
         }
 
-    fun registration(phone: String, password: String) {
+    var passwordField = ""
+
+    fun registration(phone: String, password: String, code: String = DEFAULT_CODE) {
         viewModelScope.launch {
             _state.emit(RegistrationScreenState.Loading)
             try {
                 val result = registrationUseCase.registration(
                     request = RegistrationRequest(
                         phone = phone,
-                        password = password
+                        password = password,
+                        code = code
                     )
                 )
                 if (result.data != null) {
@@ -43,6 +47,5 @@ class RegistrationViewModel(
                 _state.emit(RegistrationScreenState.ErrorLoaded(e.localizedMessage))
             }
         }
-
     }
 }

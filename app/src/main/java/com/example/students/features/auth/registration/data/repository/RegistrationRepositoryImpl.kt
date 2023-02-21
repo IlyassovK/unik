@@ -20,9 +20,8 @@ class RegistrationRepositoryImpl(
                 request = request
             )
             if (result.isSuccessful) {
-                val responseBody = result.body()
-                preferences.setUserPhone(responseBody!!.phone)
-                preferences.setUserId(responseBody.id.toLong())
+                val responseBody = result.body()!!
+//                preferences.setUserId(responseBody.data.id)
                 Resource.success(responseBody)
             } else {
                 Resource.error(NetworkExceptions.BadRequest(result.message()))

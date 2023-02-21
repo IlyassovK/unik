@@ -5,17 +5,23 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.students.R
 import com.example.students.databinding.FragmentRegistrationBinding
+import com.example.students.features.auth.AuthType
+import com.example.students.features.auth.AuthViewModel
 import com.example.students.utils.ui.PhoneTextWatcher
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     private val binding by viewBinding(FragmentRegistrationBinding::bind)
+
     private val viewModel: RegistrationViewModel by viewModel()
+    private val authViewModel: AuthViewModel by sharedViewModel()
 
     private lateinit var phoneTextWatcher: TextWatcher
 
@@ -30,9 +36,16 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         binding.apply {
             button.setOnClickListener {
                 if (isFieldsValid()) {
-                    viewModel.registration(
+                    viewModel.passwordField = binding.passwordEditText.text.toString()
+
+                    authViewModel.setFields(
                         phone = viewModel.phoneField,
-                        password = binding.passwordEditText.text.toString()
+                        password = viewModel.passwordField,
+                        authType = AuthType.REGISTRATION
+                    )
+
+                    findNavController().navigate(
+                        R.id.action_navigation_registration_to_otpFragment
                     )
                 }
             }
