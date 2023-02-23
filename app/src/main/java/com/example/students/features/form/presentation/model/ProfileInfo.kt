@@ -1,4 +1,4 @@
-package com.example.students.features.form.presentation
+package com.example.students.features.form.presentation.model
 
 import com.example.students.features.form.data.model.ProfileRequest
 import com.google.gson.annotations.SerializedName

@@ -57,6 +57,14 @@
         <item name="android:gravity">start</item>
     </style>
 
+    <style name="TextViewRegularLight" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">start</item>
+    </style>
+
 
     <style name="EditTextDigit">
         <item name="android:gravity">center</item>

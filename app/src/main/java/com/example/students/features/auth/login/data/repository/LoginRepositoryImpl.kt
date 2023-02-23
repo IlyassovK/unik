@@ -11,7 +11,7 @@ import java.lang.Exception
 
 class LoginRepositoryImpl(
     private val preferences: GlobalPreferences,
-    private val loginApi: LoginApi
+    private val loginApi: LoginApi,
 ) : LoginRepository {
 
     override suspend fun login(request: LoginRequest): Resource<LoginResponse> {
@@ -21,9 +21,8 @@ class LoginRepositoryImpl(
             )
             if (result.isSuccessful) {
                 val responseBody = result.body()!!
-//                preferences.setAccessToken(responseBody.tokenData.original.accessToken)
-//                preferences.setUserId(responseBody.id)
-
+                preferences.setAccessToken(responseBody.tokenData.original.accessToken)
+                preferences.setUserId(responseBody.id)
                 Resource.success(responseBody)
             } else {
                 Resource.error(NetworkExceptions.BadRequest(result.message()))
