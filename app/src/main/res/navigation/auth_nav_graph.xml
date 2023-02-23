@@ -58,9 +58,12 @@
 
     <fragment
         android:id="@+id/navigation_form"
-        android:name="com.example.students.features.form.presentation.FormFragment"
+        android:name="com.example.students.features.form.presentation.screen.FormFragment"
         android:label="FormFragment"
         tools:layout="@layout/fragment_form">
+        <action
+            android:id="@+id/action_navigation_form_to_formBottomSheetFragment"
+            app:destination="@id/formBottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/otpFragment"
@@ -71,4 +74,9 @@
             android:id="@+id/action_otpFragment_to_navigation_form"
             app:destination="@id/navigation_form" />
     </fragment>
+    <dialog
+        android:id="@+id/formBottomSheetFragment"
+        tools:layout="@layout/dialog_form"
+        android:name="com.example.students.features.form.presentation.screen.FormBottomSheetFragment"
+        android:label="FormBottomSheetFragment" />
 </navigation>

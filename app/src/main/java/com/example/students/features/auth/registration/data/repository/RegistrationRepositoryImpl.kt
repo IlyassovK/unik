@@ -21,7 +21,8 @@ class RegistrationRepositoryImpl(
             )
             if (result.isSuccessful) {
                 val responseBody = result.body()!!
-//                preferences.setUserId(responseBody.data.id)
+                preferences.setUserId(responseBody.data.id)
+                preferences.setAccessToken(responseBody.data.accessToken)
                 Resource.success(responseBody)
             } else {
                 Resource.error(NetworkExceptions.BadRequest(result.message()))

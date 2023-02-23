@@ -27,4 +27,7 @@
     <string name="specialty">Specialty</string>
     <string name="otp_sms_confirmation">SMS confirmation</string>
     <string name="otp_sms_code_sent">SMS-code\nwas sent to your number. Enter it:</string>
+    <string name="form_universities">Universities</string>
+    <string name="form_hobbies">Hobbies</string>
+    <string name="form_specialities">Specialities</string>
 </resources>
