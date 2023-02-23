@@ -67,6 +67,9 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor")
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+    //ui
+    implementation 'androidx.autofill:autofill:1.1.0'
+
     //map
     // Облегченная библиотека, содержит только карту, слой пробок,
     // LocationManager, UserLocationLayer и возможность скачивать офлайн-карты (только в платной версии).

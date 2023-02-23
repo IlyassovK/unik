@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="MainButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_main_btn</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/color_main_light</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="MainEditText" parent="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox">
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:ems">10</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="EditTextHint" parent="android:Widget.TextView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ButtonPrimary" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/selector_btn_primary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextViewTitleDark" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorTextViewTitleNew</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:gravity">start</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewTitleLight" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:gravity">start</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewRegular" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorTextViewRegularNew</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="TextViewRegularLight" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+
+    <style name="EditTextDigit">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:longClickable">true</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@drawable/selector_digit</item>
+    </style>
+
+    <style name="EditTextDigitSmall">
+        <item name="android:layout_width">46dp</item>
+        <item name="android:layout_height">54dp</item>
+    </style>
+</resources>

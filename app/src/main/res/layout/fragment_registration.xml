@@ -4,44 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.form.presentation.FormFragment">
+    tools:context=".features.form.presentation.screen.FormFragment">
 
     <TextView
+        style="@style/TextViewTitleLight"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Registration page"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:text="@string/registration_registration_page"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
-        android:hint="Phone number"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_edit_text"
+        android:gravity="center_vertical"
+        android:hint="@string/msg_enter_phone_number"
+        android:textColorHint="@color/colorEditTextHintNew"
+        app:boxBackgroundColor="@null"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconDrawable="@null"
+        app:endIconMode="clear_text"
+        app:endIconTint="@null"
+        app:endIconTintMode="multiply"
+        app:errorEnabled="false"
+        app:expandedHintEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintTextAppearance="@style/EditTextHint"
+        app:hintTextColor="@color/colorEditTextCursorNew"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneEditText"
+            style="@style/MainEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:hint="Password"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_edit_text"
+        android:gravity="center_vertical"
+        android:hint="@string/msg_enter_password"
+        android:textColorHint="@color/colorEditTextHintNew"
+        app:boxBackgroundColor="@null"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconDrawable="@null"
+        app:endIconMode="clear_text"
+        app:endIconTint="@null"
+        app:endIconTintMode="multiply"
+        app:errorEnabled="false"
+        app:expandedHintEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintTextAppearance="@style/EditTextHint"
+        app:hintTextColor="@color/colorEditTextCursorNew"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/phoneTextInputLayout"
@@ -49,19 +88,39 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
+            style="@style/MainEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/repeatPasswordTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:hint="Repeat password"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_edit_text"
+        android:gravity="center_vertical"
+        android:hint="@string/msg_repeat_password"
+        android:textColorHint="@color/colorEditTextHintNew"
+        app:boxBackgroundColor="@null"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconDrawable="@null"
+        app:endIconMode="clear_text"
+        app:endIconTint="@null"
+        app:endIconTintMode="multiply"
+        app:errorEnabled="false"
+        app:expandedHintEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintTextAppearance="@style/EditTextHint"
+        app:hintTextColor="@color/colorEditTextCursorNew"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordTextInputLayout"
@@ -69,9 +128,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/repeatPasswordEditText"
+            style="@style/MainEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,19 +143,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Login"
+        android:text="@string/i_have_an_account"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+
+    <com.example.students.utils.ui.customViews.ProgressButton
         android:id="@+id/button"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        android:text="Register"
+        android:enabled="true"
+        android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout="@layout/progress_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressButton">
+        <attr name="android:enabled" />
+        <attr name="android:text" />
+        <attr name="buttonStyle" format="reference" />
+        <attr name="layout" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="OtpView">
+        <attr name="isAutofillEnable" format="boolean" />
+        <attr name="isFocusEnabled" format="boolean" />
+    </declare-styleable>
+</resources>

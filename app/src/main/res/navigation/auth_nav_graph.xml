@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@+id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.students.features.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_registration"
+            app:destination="@id/navigation_registration" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.example.students.features.onboarding.presentation.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboardingFragment_to_navigation_registration"
+            app:destination="@id/navigation_registration" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.example.students.features.auth.login.presentation.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_navigation_login_to_registrationFragment"
+            app:destination="@id/navigation_registration" />
+        <action
+            android:id="@+id/action_navigation_login_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_registration"
+        android:name="com.example.students.features.auth.registration.presentation.RegistrationFragment"
+        android:label="RegistrationFragment"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_navigation_login"
+            app:destination="@id/navigation_login" />
+        <action
+            android:id="@+id/action_registrationFragment_to_formFragment"
+            app:destination="@id/navigation_form" />
+        <action
+            android:id="@+id/action_navigation_registration_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_form"
+        android:name="com.example.students.features.form.presentation.screen.FormFragment"
+        android:label="FormFragment"
+        tools:layout="@layout/fragment_form">
+        <action
+            android:id="@+id/action_navigation_form_to_formBottomSheetFragment"
+            app:destination="@id/formBottomSheetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.students.features.auth.otp.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_navigation_form"
+            app:destination="@id/navigation_form" />
+    </fragment>
+    <dialog
+        android:id="@+id/formBottomSheetFragment"
+        tools:layout="@layout/dialog_form"
+        android:name="com.example.students.features.form.presentation.screen.FormBottomSheetFragment"
+        android:label="FormBottomSheetFragment" />
+</navigation>
