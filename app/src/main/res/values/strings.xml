@@ -30,4 +30,8 @@
     <string name="form_universities">Universities</string>
     <string name="form_hobbies">Hobbies</string>
     <string name="form_specialities">Specialities</string>
+    <string name="in_developing_title">Functionality in development</string>
+    <string name="in_developing_subtitle">This functionality is under development and will be available in the upcoming releases.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -7,7 +7,7 @@ import com.example.students.features.auth.login.domain.usecase.LoginUseCase
 import com.example.students.features.auth.otp.OtpScreenState
 import com.example.students.features.auth.registration.data.model.RegistrationRequest
 import com.example.students.features.auth.registration.domain.RegistrationUseCase
-import com.example.students.features.otp.domain.OtpUseCase
+import com.example.students.features.auth.otp.domain.OtpUseCase
 import com.example.students.utils.GlobalPreferences
 import com.example.students.utils.isSuccessful
 import kotlinx.coroutines.flow.MutableSharedFlow
