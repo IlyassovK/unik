@@ -12,7 +12,11 @@
         android:id="@+id/feedFragment"
         android:name="com.example.students.features.main.feed.presentation.FeedFragment"
         android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_feedFragment_to_createPostDialogFragment"
+            app:destination="@id/createPostDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.students.features.main.map.presentation.MapFragment"
@@ -34,4 +38,9 @@
         android:name="com.example.students.features.inDev.InDevelopingFragment"
         tools:layout="@layout/fragment_in_developing"
         android:label="InDevelopingFragment" />
+    <dialog
+        android:id="@+id/createPostDialogFragment"
+        tools:layout="@layout/dialog_create_post"
+        android:name="com.example.students.features.main.feed.presentation.CreatePostDialogFragment"
+        android:label="CreatePostDialogFragment" />
 </navigation>
