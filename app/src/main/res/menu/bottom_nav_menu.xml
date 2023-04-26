@@ -7,7 +7,7 @@
         android:title="@string/main_screen_feed" />
 
     <item
-        android:id="@+id/messangerFragment"
+        android:id="@+id/messengerFragment"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/main_screen_messenger" />
 

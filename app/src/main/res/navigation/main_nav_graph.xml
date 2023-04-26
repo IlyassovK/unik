@@ -11,6 +11,11 @@
         android:label="fragment_feed"
         tools:layout="@layout/fragment_feed" />
     <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.students.features.chat.presentation.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat"/>
+    <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.students.features.map.presentation.MapFragment"
         android:label="fragment_map"

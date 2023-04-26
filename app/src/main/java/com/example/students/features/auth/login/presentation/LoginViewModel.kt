@@ -1,5 +1,6 @@
 package com.example.students.features.auth.login.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.students.features.auth.login.data.model.LoginRequest
@@ -47,6 +48,7 @@ class LoginViewModel(
                             otpResult.data
                         )
                     )
+                    Log.i("Rafa", "${result.isSuccessful()} and otp is ${otpResult.data}")
                     if (result.isSuccessful()) {
                         _state.emit(LoginScreenState.LoginSuccess)
                         return@launch
