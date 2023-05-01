@@ -1,5 +1,6 @@
 package com.example.students.features.auth.login.data.repository
 
+import android.util.Log
 import com.example.students.features.auth.login.data.model.LoginRequest
 import com.example.students.features.auth.login.data.model.LoginResponse
 import com.example.students.features.auth.login.data.service.LoginApi
@@ -7,6 +8,7 @@ import com.example.students.features.auth.login.domain.repository.LoginRepositor
 import com.example.students.utils.GlobalPreferences
 import com.example.students.utils.exceptions.NetworkExceptions
 import com.example.students.utils.Resource
+import timber.log.Timber
 import java.lang.Exception
 
 class LoginRepositoryImpl(
@@ -19,6 +21,7 @@ class LoginRepositoryImpl(
             val result = loginApi.login(
                 request = request
             )
+            Log.i("Rafa", "My result ${result.isSuccessful}")
             if (result.isSuccessful) {
                 val responseBody = result.body()!!
                 preferences.setAccessToken(responseBody.tokenData.original.accessToken)
