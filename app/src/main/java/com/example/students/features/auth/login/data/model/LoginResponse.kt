@@ -12,7 +12,7 @@ data class LoginResponse(
 data class TokenData(
     @SerializedName("exception")
     val exception: String,
-    @SerializedName("token_cdata")
+    @SerializedName("original")
     val original: Original,
 )
 

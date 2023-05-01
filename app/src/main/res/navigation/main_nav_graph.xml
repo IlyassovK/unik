@@ -5,15 +5,42 @@
     android:id="@+id/main_navigation"
     app:startDestination="@+id/feedFragment">
 
+    <action android:id="@+id/action_global_in_dev"
+        app:destination="@id/inDevelopingFragment"/>
+
     <fragment
         android:id="@+id/feedFragment"
-        android:name="com.example.students.features.feed.presentation.FeedFragment"
+        android:name="com.example.students.features.main.feed.presentation.FeedFragment"
         android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_feedFragment_to_createPostDialogFragment"
+            app:destination="@id/createPostDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.example.students.features.map.presentation.MapFragment"
+        android:name="com.example.students.features.main.map.presentation.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
 
+    <fragment
+        android:id="@+id/messangerFragment"
+        android:name="com.example.students.features.main.messenger.MessangerFragment"
+        android:label="fragment_messanger"
+        tools:layout="@layout/fragment_messanger" />
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.example.students.features.main.contacts.ContactsFragment"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" />
+    <fragment
+        android:id="@+id/inDevelopingFragment"
+        android:name="com.example.students.features.inDev.InDevelopingFragment"
+        tools:layout="@layout/fragment_in_developing"
+        android:label="InDevelopingFragment" />
+    <dialog
+        android:id="@+id/createPostDialogFragment"
+        tools:layout="@layout/dialog_create_post"
+        android:name="com.example.students.features.main.feed.presentation.CreatePostDialogFragment"
+        android:label="CreatePostDialogFragment" />
 </navigation>
