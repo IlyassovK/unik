@@ -12,7 +12,7 @@
         android:title="@string/main_screen_messenger" />
 
     <item
-        android:id="@+id/contactFragment"
+        android:id="@+id/contactsFragment"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/main_screen_contact" />
     <item

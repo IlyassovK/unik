@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.students.features.auth.login.data.model.LoginRequest
 import com.example.students.features.auth.login.domain.usecase.LoginUseCase
-import com.example.students.features.otp.domain.OtpUseCase
+import com.example.students.features.auth.otp.domain.OtpUseCase
 import com.example.students.utils.isSuccessful
 import com.example.students.utils.phoneNumberToRaw
 import kotlinx.coroutines.flow.MutableSharedFlow

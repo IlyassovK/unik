@@ -30,4 +30,12 @@
     <string name="form_universities">Universities</string>
     <string name="form_hobbies">Hobbies</string>
     <string name="form_specialities">Specialities</string>
+    <string name="in_developing_title">Functionality in development</string>
+    <string name="in_developing_subtitle">This functionality is under development and will be available in the upcoming releases.</string>
+    <string name="feed_create_post">Create post</string>
+    <string name="feed_title">Title</string>
+    <string name="feed_description_optional">Description</string>
+    <string name="feed_post_text">Post text</string>
+    <string name="msg_create">Create</string>
+    <string name="msg_search">Search</string>
 </resources>
