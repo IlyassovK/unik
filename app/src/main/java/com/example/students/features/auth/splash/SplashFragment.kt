@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.students.MainActivity
 import com.example.students.R
 import com.example.students.databinding.FragmentSplashBinding
 import com.example.students.utils.GlobalPreferences
@@ -27,12 +28,16 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (prefs.isFirstLaunch()) {
-            findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
-            prefs.firstStartHappened()
+        if (prefs.isAuthorized()) {
+            val intent = MainActivity.getIntent(requireContext())
+            startActivity(intent)
         } else {
-            findNavController().navigate(R.id.action_splashFragment_to_navigation_registration)
+            if (prefs.isFirstLaunch()) {
+                findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+                prefs.firstStartHappened()
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_navigation_registration)
+            }
         }
     }
-
 }

@@ -1,6 +1,7 @@
 package com.example.students.utils
 
 import android.content.SharedPreferences
+import com.example.students.features.auth.login.data.model.LoginResponse
 import org.koin.java.KoinJavaComponent.inject
 
 class GlobalPreferences {
@@ -13,6 +14,16 @@ class GlobalPreferences {
 
     fun isFirstLaunch(): Boolean {
         return preferences.getBoolean(IS_FIRST_LAUNCH, true)
+    }
+
+    fun authorization(id: Long, token: String) {
+        setAccessToken(token)
+        setUserId(id)
+        preferences.edit().putBoolean(IS_AUTHORIZED, true).apply()
+    }
+
+    fun isAuthorized(): Boolean {
+        return preferences.getBoolean(IS_AUTHORIZED, false) && getAccessToken().isNotBlank()
     }
 
     fun setAccessToken(token: String) {
@@ -35,7 +46,7 @@ class GlobalPreferences {
         preferences.edit().putLong(KEY_USER_ID, id).apply()
     }
 
-    fun firstStartHappened(){
+    fun firstStartHappened() {
         preferences.edit().putBoolean(IS_FIRST_LAUNCH, false).apply()
     }
 
@@ -45,5 +56,6 @@ class GlobalPreferences {
         const val KEY_ACCESS_TOKEN = "access_token"
         const val KEY_USER_PHONE = "phone_number"
         const val KEY_USER_ID = "phone_number"
+        const val IS_AUTHORIZED = "is_authorized"
     }
 }

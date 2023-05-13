@@ -14,7 +14,7 @@ import com.example.students.databinding.FragmentFeedBinding
 import com.example.students.features.main.feed.presentation.model.FeedState
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class FeedFragment : Fragment(R.layout.fragment_feed) {
+class FeedFragment : Fragment() {
     private val binding by viewBinding(FragmentFeedBinding::bind)
     private val viewModel: FeedPageViewModel by sharedViewModel()
 

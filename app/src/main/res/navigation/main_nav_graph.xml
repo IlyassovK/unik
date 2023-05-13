@@ -5,14 +5,15 @@
     android:id="@+id/main_navigation"
     app:startDestination="@+id/feedFragment">
 
-    <action android:id="@+id/action_global_in_dev"
-        app:destination="@id/inDevelopingFragment"/>
+    <action
+        android:id="@+id/action_global_in_dev"
+        app:destination="@id/inDevelopingFragment" />
 
     <fragment
         android:id="@+id/feedFragment"
         android:name="com.example.students.features.main.feed.presentation.FeedFragment"
         android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" >
+        tools:layout="@layout/fragment_feed">
         <action
             android:id="@+id/action_feedFragment_to_createPostDialogFragment"
             app:destination="@id/createPostDialogFragment" />
@@ -21,12 +22,16 @@
         android:id="@+id/contactFragment"
         android:name="com.example.students.features.chat.presentation.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat"/>
+        tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.students.features.main.map.presentation.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_mapFragment_to_createPointBottomDialog"
+            app:destination="@id/createPointBottomDialog" />
+    </fragment>
 
     <fragment
         android:id="@+id/messangerFragment"
@@ -41,11 +46,16 @@
     <fragment
         android:id="@+id/inDevelopingFragment"
         android:name="com.example.students.features.inDev.InDevelopingFragment"
-        tools:layout="@layout/fragment_in_developing"
-        android:label="InDevelopingFragment" />
+        android:label="InDevelopingFragment"
+        tools:layout="@layout/fragment_in_developing" />
     <dialog
         android:id="@+id/createPostDialogFragment"
-        tools:layout="@layout/dialog_create_post"
         android:name="com.example.students.features.main.feed.presentation.CreatePostDialogFragment"
-        android:label="CreatePostDialogFragment" />
+        android:label="CreatePostDialogFragment"
+        tools:layout="@layout/dialog_create_post" />
+    <dialog
+        android:id="@+id/createPointBottomDialog"
+        android:name="com.example.students.features.main.map.CreatePointBottomDialog"
+        android:label="CreatePointBottomDialog"
+        tools:layout="@layout/dialog_create_point" />
 </navigation>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_bank_map_object_root_cl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:paddingBottom="16dp">
+
+    <ImageView
+        android:id="@+id/bank_map_object_iv"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/ic_point_green_white_border_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/bank_map_object_name_tv"
+        style="@style/TextViewSubTitleLight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:singleLine="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bank_map_object_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ул.Сатпаева, 90, угол ул.Брусиловского, 2 парадная, 1-й этаж" />
+
+    <TextView
+        android:id="@+id/bank_map_object_address_tv"
+        style="@style/TextViewRegular"
+        android:textColor="@color/white"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:includeFontPadding="false"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/bank_map_object_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/bank_map_object_name_tv"
+        tools:text="ул.Сатпаева, 90, угол ул.Брусиловского, 2 парадная, 1-й этаж" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/bank_map_object_distance_tv"
+        style="@style/TextViewRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawableStart="@drawable/ic_bank_object_distance_20dp"
+        android:drawablePadding="4dp"
+        android:gravity="start|top"
+        android:includeFontPadding="false"
+        android:paddingEnd="28dp"
+        app:layout_constraintStart_toStartOf="@id/bank_map_object_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/bank_map_object_address_tv"
+        tools:text="1,7km" />
+
+    <View
+        android:id="@+id/bank_map_object_name_tv_click_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

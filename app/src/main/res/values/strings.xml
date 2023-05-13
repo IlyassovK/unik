@@ -38,4 +38,21 @@
     <string name="feed_post_text">Post text</string>
     <string name="msg_create">Create</string>
     <string name="msg_search">Search</string>
+    <string name="fragment_map_type_all">All</string>
+    <string name="fragment_map_type_friends">Friends</string>
+    <string name="fragment_map_type_notes">Notes</string>
+    <string name="action_search_in_this_area">Search in that region</string>
+    <string name="fragment_map_the_list_is_empty">List is empty</string>
+
+    <string name="permissions__location__dialog_title">For correct loading it is recommended to enable the phone location service</string>
+    <string name="permissions__location__dialog_accept">Open settings</string>
+    <string name="permissions__location__dialog_cancel">Upload by region</string>
+    <string name="fragment_bank_object_detail_btn_set_way">Set a route</string>
+    <string name="fragment_bank_object_detail_btn_show_on_map">Show on map</string>
+    <string name="map_create_point">Create point</string>
+    <string name="map_point_description">Point description</string>
+    <string name="map_longitude">Longitude</string>
+    <string name="map_latitude">Latitude</string>
+    <string name="map_location_permissions_toast_for_way">To set a route, you are required to enable and grant access to geolocation in your phone settings</string>
+
 </resources>

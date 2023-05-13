@@ -21,11 +21,14 @@ class LoginRepositoryImpl(
             val result = loginApi.login(
                 request = request
             )
-            Log.i("Rafa", "My result ${result.isSuccessful}")
             if (result.isSuccessful) {
                 val responseBody = result.body()!!
-                preferences.setAccessToken(responseBody.tokenData.original.accessToken)
-                preferences.setUserId(responseBody.id)
+
+                preferences.authorization(
+                    token = responseBody.tokenData.original.accessToken,
+                    id = responseBody.id
+                )
+
                 Resource.success(responseBody)
             } else {
                 Resource.error(NetworkExceptions.BadRequest(result.message()))

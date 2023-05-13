@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/map_root_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="0dp"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/branch__title_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/branch__title__close"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/icv_back"
+                android:contentDescription="title close" />
+
+            <TextView
+                android:id="@+id/map_title"
+                style="@style/TextViewSubTitleDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:includeFontPadding="false"
+                tools:text="@string/main_screen_map" />
+
+            <ToggleButton
+                android:id="@+id/branch__title__tgl"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="0dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:button="@drawable/selector__bank_map__title_tgl"
+                android:clickable="true"
+                android:focusable="true"
+                android:textOff=""
+                android:textOn="" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.yandex.mapkit.mapview.MapView
+            android:id="@+id/mapview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/branch__title_ll"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/map_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/branch__title_ll">
+
+
+            <HorizontalScrollView
+                android:id="@+id/branch_type_scroll_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3F0F2FF"
+                android:scrollbars="none"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/branch_type_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:background="#00F0F2FF"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingVertical="0dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    tools:ignore="RtlSymmetry">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/branch_type_all__card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ToggleButton
+                            android:id="@+id/branch_type_all"
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginStart="0dp"
+                            android:background="@drawable/bg_branch_type_all"
+                            android:button="@android:color/transparent"
+                            android:checked="true"
+                            android:elevation="0dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="@string/fragment_map_type_all"
+                            android:textAllCaps="false"
+                            android:textColor="@color/branch_type_radio_text_selector"
+                            android:textOff="@null"
+                            android:textOn="@null"
+                            android:textSize="12sp" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/branch_type_branch__card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/branch_type_all__card"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ToggleButton
+                            android:id="@+id/branch_type_branch"
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginStart="0dp"
+                            android:background="@drawable/bg_branch_type_friend"
+                            android:button="@android:color/transparent"
+                            android:checked="false"
+                            android:drawablePadding="4dp"
+                            android:elevation="0dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:paddingHorizontal="12dp"
+                            android:text="@string/fragment_map_type_friends"
+                            android:textAllCaps="false"
+                            android:textColor="@color/branch_type_radio_text_selector"
+                            android:textOff="@null"
+                            android:textOn="@null"
+                            android:textSize="12sp" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/branch_type_atm__card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/branch_type_branch__card"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ToggleButton
+                            android:id="@+id/branch_type_atm"
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginStart="0dp"
+                            android:background="@drawable/bg_branch_type_note"
+                            android:button="@android:color/transparent"
+                            android:checked="false"
+                            android:drawablePadding="4dp"
+                            android:elevation="0dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:paddingHorizontal="12dp"
+                            android:text="@string/fragment_map_type_notes"
+                            android:textAllCaps="false"
+                            android:textColor="@color/branch_type_radio_text_selector"
+                            android:textOff="@null"
+                            android:textOn="@null"
+                            android:textSize="12sp" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bank_map_object_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/map_info_layout"
+            tools:listitem="@layout/item__bank_objects_list" />
+
+        <TextView
+            android:id="@+id/reload_objects_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/button_reload_objects"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_find"
+            android:drawablePadding="6dp"
+            android:elevation="6dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="12dp"
+            android:text="@string/action_search_in_this_area"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTextViewLight"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/map_info_layout"
+            tools:visibility="visible" />
+
+        <com.example.students.features.main.map.presentation.CompassButton
+            android:id="@+id/map_view_compass_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:contentDescription=""
+            app:layout_constraintBottom_toTopOf="@+id/map_view_centred_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/map_view_centred_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:contentDescription=""
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/map_view_compass_btn">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_map_view_centred_btn_55x60dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/map_list_empty_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/map_info_layout">
+
+            <TextView
+                android:id="@+id/map_list_empty_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:includeFontPadding="false"
+                android:text="@string/fragment_map_the_list_is_empty"
+                android:textColor="@color/colorTextViewRegularNew"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
