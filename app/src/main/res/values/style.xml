@@ -33,12 +33,72 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="ButtonSecondary" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/selector_btn_secondary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
     <style name="TextViewTitleDark" parent="android:Widget.TextView">
         <item name="android:textColor">@color/colorTextViewTitleNew</item>
         <item name="android:textSize">26sp</item>
         <item name="android:gravity">start</item>
         <item name="fontFamily">sans-serif</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewSubTitleDark" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorTextViewTitleNew</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">start</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewSubTitleLight" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorTextViewLight</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">start</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <!--    Bank Details -->
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/round_bottom_sheet</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
+
+    <style name="BankMapObjectDetailsBtn" parent="android:Widget.TextView">
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#0D213A</item>
+        <item name="android:background">@drawable/background_sheet_detail_btn</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="BankMapObject.Time" parent="android:Widget.TextView">
+        <item name="android:textColor">#0D213A</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="TextViewTitleLight" parent="android:Widget.TextView">

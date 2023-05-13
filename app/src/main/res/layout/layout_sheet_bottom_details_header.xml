@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_bank_map_object_details_root_cl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="@android:color/transparent"
+    android:paddingBottom="1dp">
+
+    <ImageView
+        android:id="@+id/bank_map_object_details_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_point_green_white_border_10dp" />
+
+    <TextView
+        android:id="@+id/bank_map_object_details_name_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:singleLine="false"
+        style="@style/TextViewSubTitleLight"
+        android:includeFontPadding="false"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/bank_map_object_details_close_iv"
+        app:layout_constraintStart_toEndOf="@id/bank_map_object_details_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ул.Сатпаева, 90, угол ул.Брусиловского, 2 парадная, 1-й этаж" />
+
+    <ImageView
+        android:id="@+id/bank_map_object_details_close_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/ic_close"
+        android:textColor="#000000"
+        android:textStyle="normal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/bank_map_object_details_name_tv"
+        app:layout_constraintTop_toTopOf="@id/bank_map_object_details_name_tv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

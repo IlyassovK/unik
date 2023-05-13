@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/pay_progress"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:translationZ="10dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:indeterminateTint="#fff"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/main_btn"
+        style="@style/ButtonSecondary"
+        android:includeFontPadding="false"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        tools:text="@string/msg_continue" />
+</RelativeLayout>

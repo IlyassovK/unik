@@ -4,11 +4,12 @@ import android.app.Application
 import androidx.viewbinding.BuildConfig
 import com.example.students.di.network.commonModule
 import com.example.students.di.network.networkModule
-import com.example.students.features.main.feed.di.feedPageModule
 import com.example.students.features.auth.form.di.formModule
 import com.example.students.features.auth.login.di.loginModule
 import com.example.students.features.auth.otp.di.otpModule
 import com.example.students.features.auth.registration.di.registrationModule
+import com.example.students.features.main.feed.di.feedPageModule
+import com.example.students.features.main.map.di.mapModule
 import com.yandex.mapkit.MapKitFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -32,7 +33,8 @@ class App : Application() {
                 registrationModule,
                 commonModule,
                 otpModule,
-                feedPageModule
+                feedPageModule,
+                mapModule
             )
         }
     }
