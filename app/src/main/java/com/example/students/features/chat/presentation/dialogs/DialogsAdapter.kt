@@ -5,16 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.students.databinding.ItemDialogsBinding
 import com.example.students.features.chat.data.model.Dialog
+import com.example.students.utils.parse
 import com.example.students.utils.setImage
 import com.example.students.utils.setSafeOnClickListener
 
 class DialogsAdapter(
-    private val onClick: (item: Dialog) -> Unit
+//    private val onClick: (item: Dialog) -> Unit
 ) : RecyclerView.Adapter<DialogsViewHolder>() {
 
     private var items = emptyList<Dialog>()
 
-    fun setDialogs(createDialog: List<Dialog>) {
+    fun setItems(createDialog: List<Dialog>) {
         items = createDialog
         notifyDataSetChanged()
     }
@@ -30,14 +31,14 @@ class DialogsAdapter(
         val data = items[position]
 
         holder.binding.apply {
-            root.setSafeOnClickListener {
-                onClick.invoke(items[position])
-            }
+//            root.setSafeOnClickListener {
+//                onClick.invoke(items[position])
+//            }
 
             dialogAvatar.setImage(data.imgPath)
             dialogUserName.text = data.userName
             dialogLastMessage.text = data.lastMessage.messageText
-            dialogLastMessageTime.text = data.lastMessage.time.toString()
+            dialogLastMessageTime.text = data.lastMessage.time.parse()
         }
     }
 }

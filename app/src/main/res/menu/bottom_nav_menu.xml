@@ -7,7 +7,7 @@
         android:title="@string/main_screen_feed" />
 
     <item
-        android:id="@+id/messengerFragment"
+        android:id="@+id/chatFragment"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/main_screen_messenger" />
 
@@ -19,5 +19,4 @@
         android:id="@+id/mapFragment"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/main_screen_map" />
-
 </menu>

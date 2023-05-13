@@ -4,7 +4,7 @@
     <string name="main_screen_feed">Feed</string>
     <string name="main_screen_map">Map</string>
     <string name="main_screen_contact">Contact</string>
-    <string name="main_screen_messenger">Messenger</string>
+    <string name="main_screen_messenger">Chat</string>
     <string name="onboarding_find_friends">ищи друзей и подруг на ближайщую жизнь</string>
     <string name="onboarding_only_for_students">приложение где встречаются студенты и никто больше</string>
     <string name="onboarding_go_next">гоу дальше</string>

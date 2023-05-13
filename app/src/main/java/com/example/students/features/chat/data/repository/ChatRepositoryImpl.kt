@@ -19,14 +19,29 @@ class ChatRepositoryImpl(private val chatApi: ChatApi) : ChatRepository {
     }
 
     override suspend fun getAllMessages(): Resource<List<Message>> {
-        TODO("Not yet implemented")
+        return try {
+            val result = chatApi.getAllMessages()
+            return Resource.success(result)
+        } catch (e: Exception) {
+            Resource.error(NetworkExceptions.BadRequest("Exception during getAllMessages"))
+        }
     }
 
     override suspend fun createChat(createChatRequest: CreateChatRequest) {
-        TODO("Not yet implemented")
+        try {
+            val result = chatApi.createChat(createChatRequest)
+            Resource.success(result)
+        } catch (e: Exception) {
+            Resource.error(NetworkExceptions.BadRequest("Exception during create chat"))
+        }
     }
 
     override suspend fun createMessage(createMessageRequest: CreateMessageRequest) {
-        TODO("Not yet implemented")
+        try {
+            val result = chatApi.createMessage(createMessageRequest)
+            Resource.success(result)
+        } catch (e: Exception) {
+            Resource.error(NetworkExceptions.BadRequest("Exception during create message"))
+        }
     }
 }

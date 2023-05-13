@@ -8,7 +8,6 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.example.students.R
 import com.example.students.utils.ui.SafeClickListener
-import java.sql.Time
 import java.sql.Timestamp
 
 //EditText
@@ -53,15 +52,14 @@ fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
     setOnClickListener(safeClickListener)
 }
 
-fun Timestamp.parse(): Time {
-    return Time(this.time)
+fun Timestamp.parse(): String {
+    return "${hours.toString()}:${minutes.toString()}"
 }
 
 fun ImageView.setImage(url: String) {
     Glide
         .with(this)
         .load(url)
-        .centerCrop()
         .placeholder(R.drawable.ic_empty_avatar)
         .into(this)
 }

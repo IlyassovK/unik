@@ -11,22 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/dialogAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imgCardView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="40dp"
+            android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_add" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/dialogAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                tools:src="@drawable/ic_add" />
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
+            android:id="@+id/dialogUserContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/dialogAvatar"
+            app:layout_constraintLeft_toRightOf="@id/imgCardView"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -39,25 +49,24 @@
 
             <TextView
                 android:id="@+id/dialogLastMessage"
-                android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:textSize="14sp"
                 tools:text="Last message" />
-
 
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/dialogLastMessageTime"
-            android:textSize="11sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             tools:text="23:59" />
 
 
