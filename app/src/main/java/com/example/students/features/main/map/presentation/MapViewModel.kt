@@ -27,6 +27,14 @@ class MapViewModel(
         MutableSharedFlow()
     val createState: SharedFlow<CreatePointState> = _createState
 
+    var createLatitude: Double = 0.0
+    var createLongitude: Double = 0.0
+
+    fun createPoint(lat: Double, long: Double) {
+        createLatitude = lat
+        createLongitude = long
+    }
+
     /**
      * поискк в коллекции ключ/значение  внутри bankMapObjectsLiveData  обьекта MapObject по его id
      * осуществляется по клику на обьект карты или списка

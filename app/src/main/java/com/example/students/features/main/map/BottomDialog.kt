@@ -38,9 +38,8 @@ class BottomDialog : BottomSheetDialogFragment() {
     //    header
     private lateinit var iconView: ImageView
     private lateinit var titleView: TextView
-    private lateinit var addressView: TextView
     private lateinit var distanceView: TextView
-    private lateinit var workHourView: TextView
+    private lateinit var descView: TextView
     private lateinit var notWorkView: TextView
     private lateinit var setWayBtn: TextView
     private lateinit var showOnMapBtn: TextView
@@ -78,11 +77,15 @@ class BottomDialog : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         callFromList = arguments?.getBoolean(KEY_BUNDLE_MAP_OBJECT_INITIATOR_BOTTOM_DIALOG, false)!!
         mapObject = arguments?.getParcelable(KEY_BUNDLE_MAP_OBJECT_BOTTOM_DIALOG)
-        binding = LayoutMapObjectDetailsBottomDefaultBinding.inflate(LayoutInflater.from(context), container, false)
+        binding = LayoutMapObjectDetailsBottomDefaultBinding.inflate(
+            LayoutInflater.from(context),
+            container,
+            false
+        )
 
         binding.root.let { view ->
             initViews(view)
@@ -164,7 +167,7 @@ class BottomDialog : BottomSheetDialogFragment() {
 //        header
         iconView = view.findViewById(R.id.bank_map_object_details_iv)
         titleView = view.findViewById(R.id.bank_map_object_details_name_tv)
-        addressView = view.findViewById(R.id.bank_map_object_details_address_tv)
+        descView = view.findViewById(R.id.bank_map_object_details_address_tv)
         distanceView = view.findViewById(R.id.bank_map_object_details_distance_tv)
         setWayBtn = view.findViewById(R.id.bank_map_object_details_btn_set_the_way)
         showOnMapBtn = view.findViewById(R.id.bank_map_object_details_btn_show_on_map)
@@ -176,7 +179,7 @@ class BottomDialog : BottomSheetDialogFragment() {
     private fun fillCommonViews() {
         mapObject?.let { mapObject ->
             titleView.text = mapObject.name
-            addressView.text = mapObject.address
+            descView.text = mapObject.description
             //header
             if (PermissionsUtils.checkComplexLocationPermissions(requireActivity())) {
                 distanceView.text = mapObject.distance.toInt().toString()
@@ -199,8 +202,8 @@ class BottomDialog : BottomSheetDialogFragment() {
                     ).show()
 
                 } else {
-                listener?.onPrepareTheShorterWayClick(mapObject)
-                dismiss()
+                    listener?.onPrepareTheShorterWayClick(mapObject)
+                    dismiss()
                 }
             }
 
