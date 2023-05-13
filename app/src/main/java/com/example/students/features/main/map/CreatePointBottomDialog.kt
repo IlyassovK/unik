@@ -40,6 +40,14 @@ class CreatePointBottomDialog : BottomSheetDialogFragment() {
                 dismiss()
             }
 
+            if (viewModel.createLatitude != 0.0 && viewModel.createLongitude != 0.0) {
+                latEditText.setText(viewModel.createLatitude.toString())
+                longEditText.setText(viewModel.createLongitude.toString())
+
+                latEditText.isEnabled = false
+                longEditText.isEnabled = false
+            }
+
             createBtn.setOnClickListener {
                 if (isFieldsValid()) {
                     viewModel.createMapPoint(

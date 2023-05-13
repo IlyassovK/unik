@@ -9,6 +9,7 @@ import android.graphics.*
 import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.students.R
 import com.example.students.databinding.FragmentMapBinding
 import com.example.students.features.main.map.BottomDialog
+import com.example.students.features.main.map.CreatePointBottomDialog
 import com.example.students.features.main.map.presentation.model.MapLocations
 import com.example.students.features.map.RegionItem
 import com.example.students.features.map.Regions
@@ -33,6 +35,7 @@ import com.example.students.utils.setSafeOnClickListener
 import com.example.students.utils.ui.ToggleOnlyProgrammaticallyWrapper
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.yandex.mapkit.Animation
+import com.yandex.mapkit.GeoObjectCollection
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Geo
 import com.yandex.mapkit.geometry.Point
@@ -41,6 +44,7 @@ import com.yandex.mapkit.location.Location
 import com.yandex.mapkit.location.LocationListener
 import com.yandex.mapkit.location.LocationStatus
 import com.yandex.mapkit.map.*
+import com.yandex.mapkit.map.Map
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.mapkit.user_location.UserLocationObjectListener
@@ -50,7 +54,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
-    ClusterTapListener, CameraListener, MapObjectsAdapter.ItemClickListener {
+    ClusterTapListener, CameraListener, MapObjectsAdapter.ItemClickListener, InputListener {
 
     private lateinit var binding: FragmentMapBinding
 
@@ -115,6 +119,7 @@ class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+
         binding = FragmentMapBinding.inflate(inflater, container, false)
         val viewManager: RecyclerView.LayoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -209,24 +214,33 @@ class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
 
         checkStartPermissions()
 
+        binding.addPointBtn.visibility = View.GONE
         binding.addPointBtn.setOnClickListener {
             findNavController().navigate(
                 R.id.action_mapFragment_to_createPointBottomDialog
             )
         }
-        //todo create point
+
+        binding.mapview.map.addInputListener(this)
+
+
 //        binding.mapview.map.addTapListener {
 //            val point = it.geoObject.geometry[0].point
-//            Log.d("KRM", "lat ${point?.latitude} long ${point?.longitude}")
-//            if (point != null) {
-//                val bundle = Bundle()
-//                bundle.putDouble(CreatePointBottomDialog.CREATE_POINT_LAT, point.latitude)
-//                bundle.putDouble(CreatePointBottomDialog.CREATE_POINT_LONG, point.longitude)
-//                findNavController().navigate(
-//                    R.id.action_mapFragment_to_createPointBottomDialog,
-//                    bundle
-//                )
-//            }
+//
+//            viewModel.createPoint(
+//                lat = point?.latitude ?: 0.0,
+//                long = point?.longitude ?: 0.0
+//            )
+//
+////            if (point != null) {
+////                val bundle = Bundle()
+////                bundle.putDouble(CreatePointBottomDialog.CREATE_POINT_LAT, point.latitude)
+////                bundle.putDouble(CreatePointBottomDialog.CREATE_POINT_LONG, point.longitude)
+////                findNavController().navigate(
+////                    R.id.action_mapFragment_to_createPointBottomDialog,
+////                    bundle
+////                )
+////            }
 //            true
 //        }
     }
@@ -234,7 +248,6 @@ class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.getBankMapObjectsLiveData().removeObservers(this)
-
     }
 
     private fun checkStartPermissions() {
@@ -810,6 +823,16 @@ class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
         const val USER_LOCATION_ZOOM = 16.0F
 
         const val DEFAULT_USER_LOCATION_RADIUS = 1000.0
+    }
+
+    override fun onMapTap(p0: Map, p1: Point) {
+    }
+
+    override fun onMapLongTap(p0: Map, p1: Point) {
+        viewModel.createPoint(p1.latitude, p1.longitude)
+        findNavController().navigate(
+            R.id.action_mapFragment_to_createPointBottomDialog
+        )
     }
 }
 
