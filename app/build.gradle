@@ -81,4 +81,7 @@ dependencies {
     // веломаршрутизацию, пешеходную маршрутизацию и маршрутизацию на общественном транспорте,
     // поиск, suggest, геокодирование и отображение панорам.
     implementation 'com.yandex.android:maps.mobile:4.2.2-full'
+
+    // Work with image
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
 }

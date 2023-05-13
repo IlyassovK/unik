@@ -4,7 +4,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.example.students.R
 import com.example.students.utils.ui.SafeClickListener
+import java.sql.Time
+import java.sql.Timestamp
 
 //EditText
 fun EditText.cursorToEnd() {
@@ -31,7 +36,7 @@ fun EditText.onTextChanged(
     })
 }
 
-fun String.phoneNumberToRaw(): String{
+fun String.phoneNumberToRaw(): String {
     var result = this.replace("+7", "7")
     result = result.replace("(", "")
     result = result.replace(")", "")
@@ -46,4 +51,17 @@ fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
     }
 
     setOnClickListener(safeClickListener)
+}
+
+fun Timestamp.parse(): Time {
+    return Time(this.time)
+}
+
+fun ImageView.setImage(url: String) {
+    Glide
+        .with(this)
+        .load(url)
+        .centerCrop()
+        .placeholder(R.drawable.ic_empty_avatar)
+        .into(this)
 }
