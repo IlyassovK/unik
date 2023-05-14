@@ -53,7 +53,7 @@ fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
 }
 
 fun Timestamp.parse(): String {
-    return "${hours.toString()}:${minutes.toString()}"
+    return "${hours}:${minutes}"
 }
 
 fun ImageView.setImage(url: String) {

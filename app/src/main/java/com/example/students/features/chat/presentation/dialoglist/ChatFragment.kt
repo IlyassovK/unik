@@ -1,15 +1,20 @@
-package com.example.students.features.chat.presentation
+package com.example.students.features.chat.presentation.dialoglist
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.students.R
 import com.example.students.databinding.FragmentChatBinding
-import com.example.students.features.chat.data.model.Dialog
-import com.example.students.features.chat.presentation.dialogs.DialogsAdapter
+import com.example.students.features.chat.presentation.ChatViewModel
+import com.example.students.utils.GlobalPreferences
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.java.KoinJavaComponent
 
 class ChatFragment : Fragment() {
 
@@ -36,10 +41,13 @@ class ChatFragment : Fragment() {
 
         dialogAdapter.setItems(chatViewModel.getAllDialogs())
         binding.recyclerViewDialogs.adapter = dialogAdapter
+        onClick()
     }
 
-    private fun onClick(dialog: Dialog) {
-
+    private fun onClick() {
+        chatViewModel.onDialogTappedLiveData.observeForever {
+            findNavController().navigate(R.id.action_chatFragment_to_dialogFragment)
+        }
     }
 
 }

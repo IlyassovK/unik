@@ -1,15 +1,12 @@
 package com.example.students.features.chat.data.repository
 
-import com.example.students.features.chat.data.model.CreateChatRequest
-import com.example.students.features.chat.data.model.CreateMessageRequest
-import com.example.students.features.chat.data.model.Message
+import com.example.students.features.chat.data.model.*
 import com.example.students.features.chat.data.service.ChatApi
 import com.example.students.utils.Resource
 import com.example.students.utils.exceptions.NetworkExceptions
-import java.nio.channels.NetworkChannel
 
 class ChatRepositoryImpl(private val chatApi: ChatApi) : ChatRepository {
-    override suspend fun getAllChats(): Resource<List<Message>> {
+    override suspend fun getAllChats(): Resource<List<DialogResponse>> {
         return try {
             val result = chatApi.getAllChats()
             return Resource.success(result)
@@ -18,9 +15,18 @@ class ChatRepositoryImpl(private val chatApi: ChatApi) : ChatRepository {
         }
     }
 
-    override suspend fun getAllMessages(): Resource<List<Message>> {
+    override suspend fun authenticationToBroadcast(authBroadcastingRequest: AuthBroadcastingRequest): Resource<AuthBroadcasting> {
         return try {
-            val result = chatApi.getAllMessages()
+            val result = chatApi.authBroadcast(authBroadcastingRequest)
+            return Resource.success(result)
+        } catch (e: Exception) {
+            Resource.error(NetworkExceptions.BadRequest("Exception during authentication to broadcast"))
+        }
+    }
+
+    override suspend fun getAllMessages(id: Int): Resource<List<Message>> {
+        return try {
+            val result = chatApi.getAllMessages(id)
             return Resource.success(result)
         } catch (e: Exception) {
             Resource.error(NetworkExceptions.BadRequest("Exception during getAllMessages"))

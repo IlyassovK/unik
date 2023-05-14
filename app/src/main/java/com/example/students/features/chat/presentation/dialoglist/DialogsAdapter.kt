@@ -1,4 +1,4 @@
-package com.example.students.features.chat.presentation.dialogs
+package com.example.students.features.chat.presentation.dialoglist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -31,14 +31,14 @@ class DialogsAdapter(
         val data = items[position]
 
         holder.binding.apply {
-//            root.setSafeOnClickListener {
-//                onClick.invoke(items[position])
-//            }
+            root.setSafeOnClickListener {
+                data.onClick.invoke {  }
+            }
 
             dialogAvatar.setImage(data.imgPath)
             dialogUserName.text = data.userName
             dialogLastMessage.text = data.lastMessage.messageText
-            dialogLastMessageTime.text = data.lastMessage.time.parse()
+            dialogLastMessageTime.text = data.lastMessage.timeCreated.parse()
         }
     }
 }
