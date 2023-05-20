@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_messanger" />
     <fragment
         android:id="@+id/contactsFragment"
-        android:name="com.example.students.features.main.contacts.ContactsFragment"
+        android:name="com.example.students.features.main.contacts.presentation.MatchingFragment"
         android:label="fragment_contacts"
         tools:layout="@layout/fragment_contacts" />
     <fragment
