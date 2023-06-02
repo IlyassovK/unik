@@ -71,7 +71,6 @@ class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
 
     lateinit var clusterizedCollection: ClusterizedPlacemarkCollection
 
-    private lateinit var filter: Filter
 
     private var isList: Boolean = false
     private var shouldUserLocationLoad: Boolean = false
@@ -83,6 +82,7 @@ class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
     private lateinit var recyclerViewAdapter: RecyclerView.Adapter<MapObjectsAdapter.ViewHolder>
 
 
+    private lateinit var filter: Filter
     private lateinit var toggleAll: ToggleOnlyProgrammaticallyWrapper
     private lateinit var toggleFriend: ToggleOnlyProgrammaticallyWrapper
     private lateinit var toggleNotes: ToggleOnlyProgrammaticallyWrapper

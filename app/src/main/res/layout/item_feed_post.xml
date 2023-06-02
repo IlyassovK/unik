@@ -50,8 +50,7 @@
             android:background="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tint="@color/colorTextViewLight" />
-
+/>
         <TextView
             android:id="@+id/amountOfLikes"
             android:text="232"

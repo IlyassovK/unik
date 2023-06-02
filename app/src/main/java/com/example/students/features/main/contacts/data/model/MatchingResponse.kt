@@ -1,12 +1,15 @@
 package com.example.students.features.main.contacts.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class MatchingResponse(
     @SerializedName("user")
     val user: User?,
 )
 
+@Parcelize
 data class User(
     @SerializedName("birth_date")
     val birthDate: String?,
@@ -44,8 +47,9 @@ data class User(
     val updated_at: String?,
     @SerializedName("uuid")
     val uuid: String?,
-)
+): Parcelable
 
+@Parcelize
 data class City(
     @SerializedName("created_at")
     val createdAt: String?,
@@ -55,8 +59,9 @@ data class City(
     val title: String?,
     @SerializedName("updated_at")
     val updatedAt: String?,
-)
+): Parcelable
 
+@Parcelize
 data class Hobby(
     @SerializedName("created_at")
     val created_at: String?,
@@ -66,8 +71,9 @@ data class Hobby(
     val title: String?,
     @SerializedName("updated_at")
     val updatedAt: String?,
-)
+): Parcelable
 
+@Parcelize
 data class Speciality(
     @SerializedName("created_at")
     val createdAt: String?,
@@ -77,8 +83,9 @@ data class Speciality(
     val title: String?,
     @SerializedName("updated_at")
     val updatedAt: String?,
-)
+): Parcelable
 
+@Parcelize
 data class University(
     @SerializedName("created_at")
     val createdAt: String?,
@@ -88,4 +95,4 @@ data class University(
     val title: String?,
     @SerializedName("updated_at")
     val updatedAt: String?,
-)
+): Parcelable

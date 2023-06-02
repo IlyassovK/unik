@@ -26,5 +26,9 @@ object Converter {
         id = web.id,
         title = web.title,
         updatedAt = web.updatedAt,
+        isLiked = web.isLiked,
+        isSaved = web.isSaved,
+        likedUsers = web.likedUsers,
+        userId = web.userId
     )
 }

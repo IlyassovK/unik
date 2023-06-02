@@ -55,5 +55,10 @@
     <string name="map_latitude">Latitude</string>
     <string name="map_location_permissions_toast_for_way">To set a route, you are required to enable and grant access to geolocation in your phone settings</string>
     <string name="no_matching_offers">No matching offers</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_feed_type_info">Informative</string>
+    <string name="fragment_feed_type_entert">Entertaining</string>
+    <string name="feed_list_is_empty">List is empty</string>
 
 </resources>
