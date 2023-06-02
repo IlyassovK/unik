@@ -11,6 +11,9 @@ interface ChatApi {
     @GET("/api/messenger/list/chats")
     suspend fun getAllChats(): List<DialogResponse>
 
+    @GET("/api/messenger/searchChat/{name}")
+    suspend fun getChatsByName(@Path("name") name: String): List<DialogResponse>
+
     @POST("/api/broadcasting/auth")
     suspend fun authBroadcast(@Body authBroadcastingRequest: AuthBroadcastingRequest): AuthBroadcasting
 
@@ -21,7 +24,5 @@ interface ChatApi {
     suspend fun createChat(createChatRequest: CreateChatRequest)
 
     @POST("/api/messenger/create/message")
-    suspend fun createMessage(createMessageRequest: CreateMessageRequest)
-
-
+    suspend fun createMessage(@Body createMessageRequest: CreateMessageRequest): CreateMessageResponse
 }

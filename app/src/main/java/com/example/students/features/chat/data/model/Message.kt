@@ -1,8 +1,11 @@
 package com.example.students.features.chat.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import java.sql.Timestamp
 
+@Parcelize
 data class Message(
     @SerializedName("message_id")
     val messageId: Int,
@@ -14,4 +17,4 @@ data class Message(
     val timeCreated: Timestamp,
     @SerializedName("message_updated_at")
     val timeUpdated: Timestamp
-)
+) : Parcelable

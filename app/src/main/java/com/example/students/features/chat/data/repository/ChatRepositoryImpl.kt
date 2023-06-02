@@ -15,6 +15,15 @@ class ChatRepositoryImpl(private val chatApi: ChatApi) : ChatRepository {
         }
     }
 
+    override suspend fun getChatsByName(name: String): Resource<List<DialogResponse>> {
+        return try {
+            val result = chatApi.getChatsByName(name)
+            return Resource.success(result)
+        } catch (e: Exception) {
+            Resource.error(NetworkExceptions.BadRequest("Exception during searching chat"))
+        }
+    }
+
     override suspend fun authenticationToBroadcast(authBroadcastingRequest: AuthBroadcastingRequest): Resource<AuthBroadcasting> {
         return try {
             val result = chatApi.authBroadcast(authBroadcastingRequest)
@@ -42,8 +51,8 @@ class ChatRepositoryImpl(private val chatApi: ChatApi) : ChatRepository {
         }
     }
 
-    override suspend fun createMessage(createMessageRequest: CreateMessageRequest) {
-        try {
+    override suspend fun createMessage(createMessageRequest: CreateMessageRequest): Resource<CreateMessageResponse> {
+        return try {
             val result = chatApi.createMessage(createMessageRequest)
             Resource.success(result)
         } catch (e: Exception) {

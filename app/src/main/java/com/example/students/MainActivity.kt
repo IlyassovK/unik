@@ -23,7 +23,10 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.navigation_login || destination.id == R.id.navigation_registration || destination.id == R.id.navigation_form || destination.id == R.id.onboardingFragment) {
+            if (destination.id == R.id.navigation_login || destination.id == R.id.navigation_registration
+                || destination.id == R.id.navigation_form || destination.id == R.id.onboardingFragment
+                || destination.id == R.id.dialogFragment
+            ) {
                 binding.navView.visibility = View.GONE
             } else {
                 binding.navView.visibility = View.VISIBLE

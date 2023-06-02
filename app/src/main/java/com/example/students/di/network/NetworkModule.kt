@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL = "http://kdrf.su/"//""
+const val BASE_API = "kdrf.su"
 
 val networkModule = module {
     single { provideRetrofit() }

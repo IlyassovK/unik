@@ -1,7 +1,9 @@
 package com.example.students.features.chat.presentation.dialoglist
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.students.databinding.ItemDialogsBinding
 import com.example.students.features.chat.data.model.Dialog
@@ -27,18 +29,19 @@ class DialogsAdapter(
         return DialogsViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: DialogsViewHolder, position: Int) {
         val data = items[position]
 
         holder.binding.apply {
             root.setSafeOnClickListener {
-                data.onClick.invoke {  }
+                data.onClick?.invoke { }
             }
 
-            dialogAvatar.setImage(data.imgPath)
+            if (data.imgPath != null) dialogAvatar.setImage(data.imgPath)
             dialogUserName.text = data.userName
-            dialogLastMessage.text = data.lastMessage.messageText
-            dialogLastMessageTime.text = data.lastMessage.timeCreated.parse()
+            dialogLastMessage.text = data.lastMessage?.messageText
+            dialogLastMessageTime.text = data.lastMessage?.timeCreated?.parse()
         }
     }
 }

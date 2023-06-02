@@ -1,65 +1,66 @@
 package com.example.students.features.chat.presentation
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.students.features.chat.data.model.Dialog
-import com.example.students.features.chat.data.model.Message
-import java.sql.Timestamp
+import androidx.lifecycle.viewModelScope
+import com.example.students.features.chat.data.model.*
+import com.example.students.features.chat.domain.ChatUseCase
+import com.example.students.utils.EventWrapper
+import com.example.students.utils.Resource
+import com.example.students.utils.isSuccessful
+import kotlinx.coroutines.launch
 
-class ChatViewModel : ViewModel() {
+class ChatViewModel(private val chatUseCase: ChatUseCase) : ViewModel() {
 
-    private val _onDialogTappedLiveData: MutableLiveData<Unit> = MutableLiveData()
-    val onDialogTappedLiveData: LiveData<Unit> = _onDialogTappedLiveData
+    val onDialogTappedLiveData = MutableLiveData<EventWrapper<DialogResponse>>()
+    val dialogsLiveData = MutableLiveData<EventWrapper<List<Dialog>>>()
+    val messageLiveData = MutableLiveData<EventWrapper<List<Message>>>()
 
-    fun getAllDialogs(): List<Dialog> {
-        val listDialog: MutableList<Dialog> = mutableListOf()
-        val message = Message(
-            1,
-            "Huinya",
-            true,
-            Timestamp(System.currentTimeMillis()),
-            Timestamp(System.currentTimeMillis())
-        )
-        val dialog =
-            Dialog("https://i.ytimg.com/vi/PfzA1CX3aI4/maxresdefault.jpg", "Karim", message) {
-                _onDialogTappedLiveData.value = Unit
+    fun findDialogByName(name: String) {
+        viewModelScope.launch {
+            val result = chatUseCase.searchChats(name)
+            when (result.state) {
+                Resource.State.SUCCESS -> dialogsLiveData.value = EventWrapper(
+                    result.data!!.map { singleDialog ->
+                        WrapperChat.dialogWrapToUi(singleDialog) {
+                            onDialogTappedLiveData.value = EventWrapper(singleDialog)
+                        }
+                    }
+                )
             }
-        listDialog.add(dialog)
-        listDialog.add(dialog)
-        listDialog.add(dialog)
-        listDialog.add(dialog)
-        listDialog.add(dialog)
-        listDialog.add(dialog)
-
-        return listDialog
+        }
     }
 
-    fun getAllMessages(): List<Message> {
-        val listDialog: MutableList<Message> = mutableListOf()
-        val message = Message(
-            1,
-            "Huinya",
-            true,
-            Timestamp(System.currentTimeMillis()),
-            Timestamp(System.currentTimeMillis())
-        )
-        listDialog.add(message)
-        listDialog.add(message)
-        listDialog.add(message)
-        listDialog.add(message)
-        listDialog.add(message)
-        val messageMy = Message(
-            1,
-            "Nu ka ya pisal",
-            false,
-            Timestamp(System.currentTimeMillis()),
-            Timestamp(System.currentTimeMillis())
-        )
-        listDialog.add(messageMy)
-        listDialog.add(messageMy)
+    fun getAllDialogs() {
+        viewModelScope.launch {
+            val result = chatUseCase.getChats()
+            when (result.state) {
+                Resource.State.SUCCESS -> dialogsLiveData.value = EventWrapper(
+                    result.data!!.map { singleDialog ->
+                        WrapperChat.dialogWrapToUi(singleDialog) {
+                            onDialogTappedLiveData.value = EventWrapper(singleDialog)
+                        }
+                    }
+                )
+            }
+        }
+    }
 
-        return listDialog
+    fun sendMessage(message: CreateMessageRequest) {
+        viewModelScope.launch {
+            val chatResult = chatUseCase.sendMessage(message)
+            if (chatResult.isSuccessful()) {
+                getAllMessages(message.chatId)
+            }
+        }
+    }
+
+    fun getAllMessages(id: Int) {
+        viewModelScope.launch {
+            val data = chatUseCase.getMessages(id).data!!
+
+            messageLiveData.value = EventWrapper(data)
+        }
     }
 
 }
