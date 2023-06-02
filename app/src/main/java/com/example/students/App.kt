@@ -36,6 +36,7 @@ class App : Application() {
                 otpModule,
                 feedPageModule,
                 mapModule,
+                matchingModule,
                 chatModule
             )
         }
