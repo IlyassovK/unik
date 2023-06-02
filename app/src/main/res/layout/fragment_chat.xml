@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameDialogTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="24dp"
+        android:background="@drawable/bg_edit_text"
+        android:gravity="center_vertical"
+        android:hint="@string/find_by_name"
+        android:textColorHint="@color/colorEditTextHintNew"
+        app:boxBackgroundColor="@null"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:endIconDrawable="@drawable/ic_search_gray"
+        app:endIconMode="custom"
+        app:endIconTintMode="multiply"
+        app:errorEnabled="false"
+        app:expandedHintEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintTextAppearance="@style/EditTextHint"
+        app:hintTextColor="@color/colorEditTextCursorNew">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameDialogEditText"
+            style="@style/MainEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewDialogs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

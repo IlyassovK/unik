@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/contactFragment"
-        android:name="com.example.students.features.chat.presentation.ChatFragment"
+        android:name="com.example.students.features.chat.presentation.dialoglist.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
@@ -37,10 +37,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/messangerFragment"
-        android:name="com.example.students.features.main.messenger.MessangerFragment"
-        android:label="fragment_messanger"
-        tools:layout="@layout/fragment_messanger" />
+        android:id="@+id/chatFragment"
+        android:name="com.example.students.features.chat.presentation.dialoglist.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_chatFragment_to_dialogFragment"
+            app:destination="@id/dialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/contactsFragment"
         android:name="com.example.students.features.main.contacts.presentation.MatchingFragment"
@@ -51,6 +55,16 @@
         android:name="com.example.students.features.inDev.InDevelopingFragment"
         android:label="InDevelopingFragment"
         tools:layout="@layout/fragment_in_developing" />
+    <fragment
+        android:id="@+id/dialogFragment"
+        android:name="com.example.students.features.chat.presentation.dialog.DialogFragment"
+        android:label="fragment_dialog"
+        tools:layout="@layout/fragment_dialog">
+        <action
+            android:id="@+id/action_dialogFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
     <dialog
         android:id="@+id/createPostDialogFragment"
         android:name="com.example.students.features.main.feed.presentation.CreatePostDialogFragment"

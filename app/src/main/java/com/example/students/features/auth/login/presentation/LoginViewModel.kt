@@ -48,7 +48,6 @@ class LoginViewModel(
                             otpResult.data
                         )
                     )
-                    Log.i("Rafa", "${result.isSuccessful()} and otp is ${otpResult.data}")
                     if (result.isSuccessful()) {
                         _state.emit(LoginScreenState.LoginSuccess)
                         return@launch

@@ -1,6 +1,5 @@
 package com.example.students.features.auth.form.domain.repository
 
-import com.example.students.features.auth.form.data.model.FormDataResponse
 import com.example.students.features.auth.form.data.model.ProfileRequest
 import com.example.students.features.auth.form.data.model.ProfileResponse
 import com.example.students.features.auth.form.presentation.model.FormData
