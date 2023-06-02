@@ -12,6 +12,7 @@ import com.example.students.utils.setSafeOnClickListener
 
 class FeedRecyclerViewAdapter(
     private val onItemClick: (post: Post) -> Unit,
+    private val onLikeClick: (post: Post) -> Unit,
 ) :
     RecyclerView.Adapter<FeedRecyclerViewAdapter.PostViewHolder>() {
 
@@ -52,12 +53,30 @@ class FeedRecyclerViewAdapter(
             root.setSafeOnClickListener {
                 onItemClick(data)
             }
+            var likes = data.amountOfLikes
 
             title.text = data.title
             description.text = data.description
             author.text = data.authorName
-            amountOfLikes.text = data.amountOfLikes.toString()
+            amountOfLikes.text = likes.toString()
             amountOfComments.text = data.amountOfComments.toString()
+
+            likeBtn.setOnClickListener {
+                onLikeClick(data)
+                if (!data.isLiked) {
+                    likeBtn.setImageResource(R.drawable.icv_favorite)
+                    amountOfLikes.text = likes++.toString()
+                } else {
+                    likeBtn.setImageResource(R.drawable.icv_favorite_selected)
+                    amountOfLikes.text = likes--.toString()
+                }
+                notifyDataSetChanged()
+            }
+            if (data.isLiked) {
+                likeBtn.setImageResource(R.drawable.icv_favorite_selected)
+            } else {
+                likeBtn.setImageResource(R.drawable.icv_favorite)
+            }
         }
     }
 }

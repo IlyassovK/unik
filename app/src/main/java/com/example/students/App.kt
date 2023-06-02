@@ -8,6 +8,7 @@ import com.example.students.features.auth.form.di.formModule
 import com.example.students.features.auth.login.di.loginModule
 import com.example.students.features.auth.otp.di.otpModule
 import com.example.students.features.auth.registration.di.registrationModule
+import com.example.students.features.main.contacts.di.matchingModule
 import com.example.students.features.chat.di.chatModule
 import com.example.students.features.main.feed.di.feedPageModule
 import com.example.students.features.main.map.di.mapModule

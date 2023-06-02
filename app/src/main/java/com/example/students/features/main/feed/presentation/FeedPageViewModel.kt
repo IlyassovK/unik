@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.students.features.main.feed.data.model.CreatePostRequest
 import com.example.students.features.main.feed.domain.usecase.FeedPageUseCase
+import com.example.students.features.main.feed.presentation.model.Category
 import com.example.students.features.main.feed.presentation.model.CreatePostState
 import com.example.students.features.main.feed.presentation.model.FeedState
+import com.example.students.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -24,12 +26,15 @@ class FeedPageViewModel(
         MutableSharedFlow()
     val state: SharedFlow<FeedState> = _state
 
-    fun getAllPosts() {
+    val categoryList = SingleLiveEvent<List<Category>>()
+
+    var createPostCategoryId = -1
+    fun getPosts(id: Int) {
         viewModelScope.launch {
             try {
                 _state.emit(FeedState.Loading)
                 withContext(Dispatchers.IO) {
-                    val result = feedUseCase.getAllPosts()
+                    val result = feedUseCase.getPosts(id)
                     if (result.data != null) {
                         _state.emit(
                             FeedState.PostsLoaded(
@@ -62,6 +67,23 @@ class FeedPageViewModel(
                 }
             } catch (e: Exception) {
                 _createState.emit(CreatePostState.Error)
+            }
+        }
+    }
+
+    fun likePost(id: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                feedUseCase.likePost(id)
+            }
+        }
+    }
+
+    private fun getAllCategories() {
+        viewModelScope.launch {
+            val result = feedUseCase.getAllCategories()
+            if (result.data != null) {
+                categoryList.value = result.data!!
             }
         }
     }

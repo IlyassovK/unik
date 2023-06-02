@@ -9,8 +9,8 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface FeedApi {
-    @GET("/api/post/list")
-    suspend fun getAllPosts(): Response<AllPostsResponse>
+    @GET("/api/post/list/{id}")
+    suspend fun getPosts(@Path("id") id: Int): Response<AllPostsResponse>
 
     @GET("/api/post/list/{id}")
     suspend fun getPostById(@Path("id") id: String): Response<PostResponse>
@@ -18,6 +18,9 @@ interface FeedApi {
     @POST("/api/post/create")
     suspend fun createPost(@Body request: CreatePostRequest): Response<CreatePostResponse>
 
-    @PATCH("api/post/like/{id}")
+    @PATCH("/api/post/like/{id}")
     suspend fun likePost(@Path("id") id: String): Response<LikeResponse>
+
+    @GET("/api/post/category/list")
+    suspend fun getAllCategories(): Response<CategoryResponse>
 }

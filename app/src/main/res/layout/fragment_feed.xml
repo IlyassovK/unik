@@ -46,6 +46,139 @@
             tools:layout_editor_absoluteY="93dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/feed_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/search_input_layout">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/branch_type_scroll_container" />
+
+        <HorizontalScrollView
+            android:id="@+id/branch_type_scroll_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/branch_type_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:background="#00F0F2FF"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="0dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                tools:ignore="RtlSymmetry">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/branch_type_all__card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ToggleButton
+                        android:id="@+id/branch_type_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="0dp"
+                        android:background="@drawable/bg_branch_type_all"
+                        android:button="@android:color/transparent"
+                        android:checked="true"
+                        android:elevation="0dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/fragment_map_type_all"
+                        android:textAllCaps="false"
+                        android:textColor="@color/branch_type_radio_text_selector"
+                        android:textOff="@null"
+                        android:textOn="@null"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/branch_type_branch__card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/branch_type_all__card"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ToggleButton
+                        android:id="@+id/branch_type_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="0dp"
+                        android:background="@drawable/bg_branch_type_friend"
+                        android:button="@android:color/transparent"
+                        android:checked="false"
+                        android:drawablePadding="4dp"
+                        android:elevation="0dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:paddingHorizontal="12dp"
+                        android:text="@string/fragment_feed_type_info"
+                        android:textAllCaps="false"
+                        android:textColor="@color/branch_type_radio_text_selector"
+                        android:textOff="@null"
+                        android:textOn="@null"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/branch_type_atm__card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/branch_type_branch__card"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ToggleButton
+                        android:id="@+id/branch_type_ent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="0dp"
+                        android:background="@drawable/bg_branch_type_note"
+                        android:button="@android:color/transparent"
+                        android:checked="false"
+                        android:drawablePadding="4dp"
+                        android:elevation="0dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:paddingHorizontal="12dp"
+                        android:text="@string/fragment_feed_type_entert"
+                        android:textAllCaps="false"
+                        android:textColor="@color/branch_type_radio_text_selector"
+                        android:textOff="@null"
+                        android:textOn="@null"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </HorizontalScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -56,10 +189,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:text="@string/feed_list_is_empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feed_info_layout" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/search_input_layout"
+        app:layout_constraintTop_toBottomOf="@id/feed_info_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="0dp">
 

@@ -46,6 +46,7 @@ class CreatePostDialogFragment : BottomSheetDialogFragment() {
                             title = binding.titleEditText.text.toString(),
                             description = binding.descEditText.text.toString(),
                             body = binding.bodyEditText.text.toString(),
+                            ids = listOf(viewModel.createPostCategoryId)
                         )
                     )
                 } else {
@@ -56,6 +57,22 @@ class CreatePostDialogFragment : BottomSheetDialogFragment() {
                     ).show()
                 }
             }
+
+            branchTypeInfo.setOnCheckedChangeListener { compoundButton, isChecked ->
+                if (isChecked) {
+                    branchTypeEnt.isChecked = false
+                    viewModel.createPostCategoryId = 1
+                }
+            }
+
+            branchTypeEnt.setOnCheckedChangeListener { compoundButton, isChecked ->
+                if (isChecked) {
+                    branchTypeInfo.isChecked = false
+                    viewModel.createPostCategoryId = 2
+                }
+            }
+
+
         }
     }
 
@@ -90,6 +107,6 @@ class CreatePostDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun isFieldsValid(): Boolean {
-        return !binding.titleEditText.text.isNullOrEmpty() && !binding.bodyEditText.text.isNullOrEmpty() && !binding.descEditText.text.isNullOrEmpty()
+        return !binding.titleEditText.text.isNullOrEmpty() && !binding.bodyEditText.text.isNullOrEmpty() && !binding.descEditText.text.isNullOrEmpty() && viewModel.createPostCategoryId != -1
     }
 }
