@@ -1,123 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:layout_height="match_parent"
     tools:context=".features.auth.form.presentation.screen.FormFragment">
 
-    <TextView
-        style="@style/TextViewTitleLight"
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/title_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phoneTextInputLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/bg_edit_text"
-        android:gravity="center_vertical"
-        android:hint="@string/msg_enter_phone_number"
-        android:textColorHint="@color/colorEditTextHintNew"
-        app:boxBackgroundColor="@null"
-        app:boxBackgroundMode="filled"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:endIconDrawable="@null"
-        app:endIconMode="clear_text"
-        app:endIconTint="@null"
-        app:endIconTintMode="multiply"
-        app:errorEnabled="false"
-        app:expandedHintEnabled="true"
-        app:hintAnimationEnabled="true"
-        app:hintTextAppearance="@style/EditTextHint"
-        app:hintTextColor="@color/colorEditTextCursorNew"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phoneEditText"
-            style="@style/MainEditText"
+        <TextView
+            android:id="@+id/title"
+            style="@style/TextViewTitleLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="phone"
-            android:paddingHorizontal="16dp"
-            android:textColor="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="62dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_edit_text"
+            android:gravity="center_vertical"
+            android:hint="@string/msg_enter_phone_number"
+            android:textColorHint="@color/colorEditTextHintNew"
+            app:boxBackgroundColor="@null"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:endIconDrawable="@null"
+            app:endIconMode="clear_text"
+            app:endIconTint="@null"
+            app:endIconTintMode="multiply"
+            app:errorEnabled="false"
+            app:expandedHintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintTextAppearance="@style/EditTextHint"
+            app:hintTextColor="@color/colorEditTextCursorNew"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneEditText"
+                style="@style/MainEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordTextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_edit_text"
-        android:gravity="center_vertical"
-        android:hint="@string/msg_enter_password"
-        android:textColorHint="@color/colorEditTextHintNew"
-        app:boxBackgroundColor="@null"
-        app:boxBackgroundMode="filled"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:endIconDrawable="@null"
-        app:endIconMode="clear_text"
-        app:endIconTint="@null"
-        app:endIconTintMode="multiply"
-        app:errorEnabled="false"
-        app:expandedHintEnabled="true"
-        app:hintAnimationEnabled="true"
-        app:hintTextAppearance="@style/EditTextHint"
-        app:hintTextColor="@color/colorEditTextCursorNew"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phoneTextInputLayout"
-        app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEditText"
-            style="@style/MainEditText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:paddingHorizontal="16dp"
-            android:textColor="@color/black" />
+            android:layout_height="62dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
+            android:gravity="center_vertical"
+            android:hint="@string/msg_enter_password"
+            android:textColorHint="@color/colorEditTextHintNew"
+            app:boxBackgroundColor="@null"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:endIconDrawable="@null"
+            app:endIconMode="clear_text"
+            app:endIconTint="@null"
+            app:endIconTintMode="multiply"
+            app:errorEnabled="false"
+            app:expandedHintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintTextAppearance="@style/EditTextHint"
+            app:hintTextColor="@color/colorEditTextCursorNew"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneTextInputLayout"
+            app:passwordToggleEnabled="true">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
+                style="@style/MainEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/go_registration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:text="@string/login_new_user"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:focusable="true" />
+        <TextView
+            android:id="@+id/go_registration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/login_new_user"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
-    <com.example.students.utils.ui.customViews.ProgressButton
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:enabled="true"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout="@layout/progress_button_secondary" />
+        <com.example.students.utils.ui.customViews.ProgressButton
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:enabled="true"
+            android:text="@string/login"
+            app:layout="@layout/progress_button_secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

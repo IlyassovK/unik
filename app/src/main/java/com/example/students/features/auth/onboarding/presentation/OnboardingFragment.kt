@@ -24,12 +24,8 @@ class OnboardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.apply {
-            nextButton.setOnClickListener {
-                findNavController().navigate(
-                    R.id.action_onboardingFragment_to_navigation_registration
-                )
-            }
-        }
+        findNavController().navigate(
+            R.id.action_onboardingFragment_to_navigation_registration
+        )
     }
 }
