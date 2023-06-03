@@ -1,6 +1,7 @@
 package com.example.students.features.chat.data.model
 
 import android.os.Parcelable
+import com.example.students.utils.convert
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import java.sql.Timestamp
@@ -8,13 +9,29 @@ import java.sql.Timestamp
 @Parcelize
 data class Message(
     @SerializedName("message_id")
-    val messageId: Int,
+    val messageId: Int?,
     @SerializedName("message")
-    val messageText: String,
+    val messageText: String?,
     @SerializedName("my_message")
-    val type: Boolean,
+    val type: Boolean?,
     @SerializedName("message_created_at")
-    val timeCreated: Timestamp,
+    val timeCreated: Timestamp?,
     @SerializedName("message_updated_at")
-    val timeUpdated: Timestamp
+    val timeUpdated: Timestamp?,
 ) : Parcelable
+
+data class TestMessage(
+    val message: String,
+    val message_created_at: String,
+    val my_message: Boolean,
+)
+
+fun TestMessage.parse(): Message {
+    return Message(
+        messageId = null,
+        messageText = this.message,
+        timeCreated = this.message_created_at.convert(),
+        type = this.my_message,
+        timeUpdated = null
+    )
+}

@@ -1,12 +1,10 @@
 package com.example.students.utils
 
-import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -26,7 +24,7 @@ fun EditText.cursorToEnd() {
 fun EditText.onTextChanged(
     afterTextChanged: ((String) -> Unit)? = null,
     beforeTextChanged: ((String) -> Unit)? = null,
-    onTextChanged: ((String) -> Unit)? = null
+    onTextChanged: ((String) -> Unit)? = null,
 ) {
     this.addTextChangedListener(object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -60,11 +58,17 @@ fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
     setOnClickListener(safeClickListener)
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun Timestamp.parse(): String {
     val sdf = SimpleDateFormat("HH:mm")
     val netDate = Date(this.toInstant().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
     return sdf.format(netDate)
+}
+
+fun String.convert(): Timestamp {
+    val sdf = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+    sdf.timeZone = TimeZone.getTimeZone("UTC")
+    val parsedDate: Date = sdf.parse(this)
+    return Timestamp(parsedDate.time)
 }
 
 fun ImageView.setImage(url: String) {

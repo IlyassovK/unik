@@ -6,57 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".features.main.feed.presentation.FeedFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/search_input_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center_vertical"
-        android:paddingVertical="16dp"
-        app:boxBackgroundColor="@null"
-        app:boxBackgroundMode="filled"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:endIconDrawable="@drawable/ic_clear"
-        app:endIconMode="clear_text"
-        app:endIconTint="@null"
-        app:endIconTintMode="multiply"
-        app:errorEnabled="false"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorToolbarBackgroundDarkNew"
         app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/search_country_et"
-            style="@style/SearchRegularStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:background="@drawable/bg_search"
-            android:hint="@string/msg_search"
-            android:imeOptions="actionDone"
-            android:includeFontPadding="false"
-            android:lines="1"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:paddingVertical="14dp"
-            android:singleLine="true"
-            android:textCursorDrawable="@drawable/ic_cursor"
-            tools:layout_editor_absoluteY="93dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/feed_info_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/search_input_layout">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/branch_type_scroll_container" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <HorizontalScrollView
             android:id="@+id/branch_type_scroll_container"

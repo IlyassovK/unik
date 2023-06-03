@@ -29,7 +29,6 @@ class DialogsAdapter(
         return DialogsViewHolder(binding)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: DialogsViewHolder, position: Int) {
         val data = items[position]
 

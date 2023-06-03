@@ -1,21 +1,20 @@
 package com.example.students.features.chat.presentation
 
 import android.util.Log
-import com.example.students.features.chat.data.model.WebSocketData
-import com.example.students.features.chat.data.model.WebSocketResponse
+import com.example.students.features.chat.data.model.*
 import com.example.students.utils.removeQuotesAndUnescape
 import com.google.gson.Gson
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 
-class WebSocketListenerDialog : WebSocketListener() {
+class WebSocketListenerDialog(val onMessage: (message: Message) -> Unit) : WebSocketListener() {
 
     private val TAG = "Test"
 
     override fun onOpen(webSocket: WebSocket, response: Response) {
         super.onOpen(webSocket, response)
-        Log.d(TAG, "onOpen:")
+
         webSocket.send(
             "{\n" +
                     "   \"event\":\"pusher:subscribe\",\n" +
@@ -28,11 +27,14 @@ class WebSocketListenerDialog : WebSocketListener() {
 
     override fun onMessage(webSocket: WebSocket, text: String) {
         super.onMessage(webSocket, text)
+        Log.d("Raf1", "text $text")
         val texts = text.removeQuotesAndUnescape()
-//        val response = Gson().fromJson(text, WebSocketResponse::class.java)
-//        val responseData = Gson().fromJson(response.data, WebSocketData::class.java)
-        Log.d(TAG, "onMessage: $texts")
-//        Log.d(TAG, "onMessage: $responseData")
+        val response = Gson().fromJson(text, WebSocketResponse::class.java)
+        if (response.channel.equals("chatMessage") && response.data != null) {
+            val message = Gson().fromJson(response.data, TestMessage::class.java)
+            onMessage.invoke(message.parse())
+            Log.d(TAG + "MESSAGE", "onMessage: $texts")
+        }
     }
 
     override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {

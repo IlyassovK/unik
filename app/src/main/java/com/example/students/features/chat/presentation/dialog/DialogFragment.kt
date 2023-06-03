@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +16,7 @@ import com.example.students.features.chat.data.model.CreateMessageRequest
 import com.example.students.features.chat.data.model.DialogResponse
 import com.example.students.features.chat.presentation.ChatViewModel
 import com.example.students.features.chat.presentation.WebSocketListenerDialog
+import com.example.students.features.chat.presentation.dialoglist.ChatState
 import com.example.students.utils.observeEvent
 import com.example.students.utils.setSafeOnClickListener
 import com.google.gson.Gson
@@ -23,6 +26,7 @@ import okhttp3.WebSocket
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.concurrent.TimeUnit
+
 
 class DialogFragment : Fragment() {
 
@@ -49,13 +53,19 @@ class DialogFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        webSocketListener = WebSocketListenerDialog()
+        webSocketListener = WebSocketListenerDialog {
+            requireActivity().runOnUiThread(Runnable {
+                Log.d("TEST KRM", "message $it")
+                messageAdapter.setMessage(it)
+                binding.recyclerViewMessages.smoothScrollToPosition(messageAdapter.itemCount)
+            })
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentDialogBinding.inflate(inflater, container, false)
         return binding.root
@@ -78,7 +88,6 @@ class DialogFragment : Fragment() {
             createRequest(),
             webSocketListener
         )
-
     }
 
 
@@ -119,8 +128,10 @@ class DialogFragment : Fragment() {
     }
 
     private fun bindMessages() {
-        binding.recyclerViewMessages.layoutManager = LinearLayoutManager(context)
-
+        var layoutManager = LinearLayoutManager(context).apply {
+            stackFromEnd = true
+        }
+        binding.recyclerViewMessages.layoutManager = layoutManager
         binding.recyclerViewMessages.adapter = messageAdapter
     }
 
@@ -132,8 +143,27 @@ class DialogFragment : Fragment() {
 
     private fun observeLiveData() {
         observeEvent(chatViewModel.messageLiveData) {
-            messageAdapter.setItems(it)
+            when (it) {
+                ChatState.ErrorLoaded -> {
+                    showLoading(false)
+                    Toast.makeText(
+                        requireContext(),
+                        "Error during getting messages",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                ChatState.Loading -> showLoading(true)
+                is ChatState.Success -> {
+                    showLoading(false)
+                    messageAdapter.setItems(it.data)
+                }
+            }
+
         }
+    }
+
+    private fun showLoading(show: Boolean) {
+        binding.progressBar.isVisible = show
     }
 
     companion object {

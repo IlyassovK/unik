@@ -1,0 +1,41 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="427dp"
+    android:height="394dp"
+    android:viewportWidth="427"
+    android:viewportHeight="394">
+  <group>
+    <clip-path
+        android:pathData="M0,0h427v219h-427z"/>
+    <path
+        android:pathData="M319.07,59.58C353.99,122.31 303.55,229.38 302.53,220.18C297.57,175.58 311.5,144.5 191.21,150.17C152.91,147.08 79.07,153.08 56.57,123.08C32.57,86.08 62.57,43.58 81.07,35.58C113.87,16.8 284.14,-3.15 319.07,59.58Z">
+      <aapt:attr name="android:fillColor">
+        <gradient 
+            android:startX="134.59"
+            android:startY="20.4"
+            android:endX="259.39"
+            android:endY="244.57"
+            android:type="linear">
+          <item android:offset="0" android:color="#FFDB3832"/>
+          <item android:offset="1" android:color="#FF9C81E8"/>
+        </gradient>
+      </aapt:attr>
+    </path>
+    <path
+        android:pathData="M319.07,59.58C353.99,122.31 303.55,229.38 302.53,220.18C297.57,175.58 311.5,144.5 191.21,150.17C152.91,147.08 79.07,153.08 56.57,123.08C32.57,86.08 62.57,43.58 81.07,35.58C113.87,16.8 284.14,-3.15 319.07,59.58Z"
+        android:fillColor="#ffffff"
+        android:fillAlpha="0.04"/>
+  </group>
+  <path
+      android:pathData="M103.5,345.6C85.1,345.6 70.63,340.33 60.1,329.8C49.57,319.27 44.3,303.87 44.3,283.6V204H64.3V282.8C64.3,298.4 67.7,309.8 74.5,317C81.43,324.2 91.17,327.8 103.7,327.8C116.37,327.8 126.1,324.2 132.9,317C139.83,309.8 143.3,298.4 143.3,282.8V204H162.7V283.6C162.7,303.87 157.43,319.27 146.9,329.8C136.5,340.33 122.03,345.6 103.5,345.6Z"
+      android:fillColor="#9C81E8"/>
+  <path
+      android:pathData="M196.94,319V229.4H207.44L266.7,303H261.2V229.4H274V319H263.5L204.24,245.4H209.74V319H196.94Z"
+      android:fillColor="#9C81E8"/>
+  <path
+      android:pathData="M290.94,319V229.4H303.74V319H290.94Z"
+      android:fillColor="#9C81E8"/>
+  <path
+      android:pathData="M333.2,297.37L332.56,281.75L383.38,229.4H397.97L358.68,270.87L351.51,278.81L333.2,297.37ZM321.94,319V229.4H334.74V319H321.94ZM385.43,319L348.69,276.25L357.27,266.78L400.4,319H385.43Z"
+      android:fillColor="#9C81E8"/>
+</vector>

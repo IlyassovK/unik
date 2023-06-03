@@ -1,13 +1,13 @@
 package com.example.students.features.chat.presentation.dialoglist
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,7 +28,7 @@ class ChatFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentChatBinding.inflate(inflater, container, false)
         return binding.root
@@ -76,8 +76,27 @@ class ChatFragment : Fragment() {
             findNavController().navigate(R.id.action_chatFragment_to_dialogFragment, bundle)
         }
         observeEvent(chatViewModel.dialogsLiveData) {
-            dialogAdapter.setItems(it)
+            when (it) {
+                DialogsState.ErrorLoaded -> {
+                    showLoading(false)
+                    Toast.makeText(
+                        requireContext(),
+                        "Error during getting dialogs",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                DialogsState.Loading -> showLoading(true)
+                is DialogsState.Success -> {
+                    showLoading(false)
+                    dialogAdapter.setItems(it.data)
+                }
+            }
+
         }
+    }
+
+    private fun showLoading(show: Boolean) {
+        binding.progressBar.isVisible = show
     }
 
 }

@@ -6,22 +6,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.students.databinding.ItemMessageBinding
 import com.example.students.databinding.ItemMessageMyBinding
 import com.example.students.features.chat.data.model.Message
+import com.example.students.features.chat.data.model.TestMessage
 
 class MessageAdapter(
 
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var items = emptyList<Message>()
+    private var items = mutableListOf<Message>()
 
     fun setItems(createDialog: List<Message>) {
-        items = createDialog
+        items = createDialog.toMutableList()
         notifyDataSetChanged()
+    }
+
+    fun setMessage(message: Message) {
+        items.add(message)
+        notifyItemInserted(items.size - 1)
     }
 
     override fun getItemCount(): Int = items.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (items[position].type) MY_MESSAGE
+        return if (items[position].type!!) MY_MESSAGE
         else MESSAGE
     }
 
