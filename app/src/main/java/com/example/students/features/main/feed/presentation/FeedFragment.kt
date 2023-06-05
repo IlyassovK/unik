@@ -15,6 +15,7 @@ import com.example.students.R
 import com.example.students.databinding.FragmentFeedBinding
 import com.example.students.features.main.feed.presentation.PostFragment.Companion.ARG_POST
 import com.example.students.features.main.feed.presentation.model.FeedState
+import com.example.students.utils.setSafeOnClickListener
 import com.example.students.utils.ui.ToggleOnlyProgrammaticallyWrapper
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -49,6 +50,12 @@ class FeedFragment : Fragment() {
 
     private fun initViews() {
         binding.apply {
+
+            mainUserAvatarBg.setOnClickListener {
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_profileFragment
+                )
+            }
 
             toggleAll = ToggleOnlyProgrammaticallyWrapper(binding.branchTypeAll)
             toggleInfo = ToggleOnlyProgrammaticallyWrapper(binding.branchTypeInfo)

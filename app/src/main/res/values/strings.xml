@@ -62,4 +62,22 @@
     <string name="fragment_feed_type_entert">Entertaining</string>
     <string name="feed_list_is_empty">List is empty</string>
 
+    <string name="fragment_profile__data_body_info_subtitle">If your personal data has changed, then you need to change it in the Bank Branch/Outlet.</string>
+    <string name="fragment_profile__data_body_info_title">ADDITIONAL INFO</string>
+    <string name="fragment_profile__data_body_info_phone">Phone number</string>
+    <string name="fragment_profile__data_body_info_tax_id">IIN</string>
+    <string name="fragment_profile__data_body_info_numer_id">ID number</string>
+    <string name="fragment_profile__data_body_info_birthday">Date of birth</string>
+    <string name="profile_phone_number">Phone number</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_city">City</string>
+    <string name="profile_hobby">Hobbies</string>
+    <string name="profile_university">University</string>
+    <string name="profile_speciality">Speciality</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_additional_information">Additional information</string>
+    <string name="profile_friends">Friends</string>
+    <string name="empty_view_no_active_requests">No active requests</string>
+    <string name="empty_view_no_such_user_found">No such user found</string>
+
 </resources>

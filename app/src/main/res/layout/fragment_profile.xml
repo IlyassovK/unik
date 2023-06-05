@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.main.profile.presentation.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:animateLayoutChanges="true"
+            app:cardBackgroundColor="@color/colorToolbarBackgroundDarkNew"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="0dp"
+                    android:src="@drawable/ic_arrow_back_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="contentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_empty_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/friendsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/title"
+                        style="@style/TextViewSubTitleLight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="@string/profile_friends"
+                        android:textColor="@color/white" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/view_user_settings_item_arrow_right_iv"
+                        android:layout_width="14dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="12dp"
+                        android:rotation="90"
+                        android:src="@drawable/icv_arrow"
+                        android:tint="@color/white"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/userInfoTitle"
+                style="@style/TextViewSubTitleLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/profile_additional_information"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/friendsContainer" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:hint="@string/profile_name"
+                android:textColorHint="@color/colorEditTextHintNew"
+                app:boxBackgroundColor="@null"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@null"
+                app:endIconMode="clear_text"
+                app:endIconTint="@null"
+                app:endIconTintMode="multiply"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/EditTextHint"
+                app:hintTextColor="@color/colorEditTextCursorNew"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userInfoTitle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameEditText"
+                    style="@style/MainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:hint="@string/profile_phone_number"
+                android:textColorHint="@color/colorEditTextHintNew"
+                app:boxBackgroundColor="@null"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@null"
+                app:endIconMode="clear_text"
+                app:endIconTint="@null"
+                app:endIconTintMode="multiply"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/EditTextHint"
+                app:hintTextColor="@color/colorEditTextCursorNew"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameTextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneEditText"
+                    style="@style/MainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:hint="@string/profile_email"
+                android:textColorHint="@color/colorEditTextHintNew"
+                app:boxBackgroundColor="@null"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@null"
+                app:endIconMode="clear_text"
+                app:endIconTint="@null"
+                app:endIconTintMode="multiply"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/EditTextHint"
+                app:hintTextColor="@color/colorEditTextCursorNew"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phoneTextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEditText"
+                    style="@style/MainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cityTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:hint="@string/profile_city"
+                android:textColorHint="@color/colorEditTextHintNew"
+                app:boxBackgroundColor="@null"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@null"
+                app:endIconMode="clear_text"
+                app:endIconTint="@null"
+                app:endIconTintMode="multiply"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/EditTextHint"
+                app:hintTextColor="@color/colorEditTextCursorNew"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailTextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cityEditText"
+                    style="@style/MainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/hobbyTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:hint="@string/profile_hobby"
+                android:textColorHint="@color/colorEditTextHintNew"
+                app:boxBackgroundColor="@null"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@null"
+                app:endIconMode="clear_text"
+                app:endIconTint="@null"
+                app:endIconTintMode="multiply"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/EditTextHint"
+                app:hintTextColor="@color/colorEditTextCursorNew"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cityTextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hobbyEditText"
+                    style="@style/MainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/universityTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:hint="@string/profile_university"
+                android:textColorHint="@color/colorEditTextHintNew"
+                app:boxBackgroundColor="@null"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@null"
+                app:endIconMode="clear_text"
+                app:endIconTint="@null"
+                app:endIconTintMode="multiply"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/EditTextHint"
+                app:hintTextColor="@color/colorEditTextCursorNew"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hobbyTextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/universityEditText"
+                    style="@style/MainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/specialityTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_edit_text"
+                android:gravity="center_vertical"
+                android:hint="@string/profile_speciality"
+                android:textColorHint="@color/colorEditTextHintNew"
+                app:boxBackgroundColor="@null"
+                app:boxBackgroundMode="filled"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:endIconDrawable="@null"
+                app:endIconMode="clear_text"
+                app:endIconTint="@null"
+                app:endIconTintMode="multiply"
+                app:errorEnabled="false"
+                app:expandedHintEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintTextAppearance="@style/EditTextHint"
+                app:hintTextColor="@color/colorEditTextCursorNew"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/universityTextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/specialityEditText"
+                    style="@style/MainEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

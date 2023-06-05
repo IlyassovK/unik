@@ -27,6 +27,7 @@
     <color name="colorEditTextCursorNew">#386AB5</color>
     <color name="colorButtonRipple">#1F000000</color>
     <color name="colorCloseTint">#0D213A</color>
+    <color name="colorActivityBackground">#FFFFFF</color>
 
     <color name="colorTextViewTitleNew">#29313A</color>
     <color name="colorTextViewRegularNew">#67707C</color>

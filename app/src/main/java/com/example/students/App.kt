@@ -12,6 +12,7 @@ import com.example.students.features.main.contacts.di.matchingModule
 import com.example.students.features.chat.di.chatModule
 import com.example.students.features.main.feed.di.feedPageModule
 import com.example.students.features.main.map.di.mapModule
+import com.example.students.features.main.profile.di.profileModule
 import com.yandex.mapkit.MapKitFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -38,7 +39,8 @@ class App : Application() {
                 feedPageModule,
                 mapModule,
                 matchingModule,
-                chatModule
+                chatModule,
+                profileModule
             )
         }
     }

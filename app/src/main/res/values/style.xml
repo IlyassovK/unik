@@ -152,4 +152,13 @@
         <item name="android:paddingEnd">13dp</item>
         <item name="android:textColorHint">@color/colorEditTextHintNew</item>
     </style>
+
+    <style name="ProfilePersonal12Bolt" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="ProfilePersonal12Regular" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

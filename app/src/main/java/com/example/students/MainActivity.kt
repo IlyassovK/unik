@@ -23,13 +23,12 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.navigation_login || destination.id == R.id.navigation_registration
-                || destination.id == R.id.navigation_form || destination.id == R.id.onboardingFragment
-                || destination.id == R.id.dialogFragment
+            if (destination.id == R.id.feedFragment || destination.id == R.id.chatFragment
+                || destination.id == R.id.mapFragment || destination.id == R.id.contactsFragment
             ) {
-                binding.navView.visibility = View.GONE
-            } else {
                 binding.navView.visibility = View.VISIBLE
+            } else {
+                binding.navView.visibility = View.GONE
             }
         }
     }

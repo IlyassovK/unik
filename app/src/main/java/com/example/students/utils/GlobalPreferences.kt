@@ -38,8 +38,8 @@ class GlobalPreferences {
         preferences.edit().putString(KEY_USER_PHONE, phone).apply()
     }
 
-    fun getUserId(): String {
-        return preferences.getString(KEY_USER_ID, "") ?: ""
+    fun getUserId(): Long {
+        return preferences.getLong(KEY_USER_ID, 0L)
     }
 
     fun setUserId(id: Long) {

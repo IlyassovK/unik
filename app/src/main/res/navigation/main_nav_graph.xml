@@ -20,12 +20,10 @@
         <action
             android:id="@+id/action_feedFragment_to_postFragment"
             app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/contactFragment"
-        android:name="com.example.students.features.chat.presentation.dialoglist.ChatFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.students.features.main.map.presentation.MapFragment"
@@ -80,4 +78,38 @@
         android:name="com.example.students.features.main.feed.presentation.PostFragment"
         android:label="fragment_post"
         tools:layout="@layout/fragment_post" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.students.features.main.profile.presentation.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_friendsFragment"
+            app:destination="@id/friendsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendsFragment"
+        android:name="com.example.students.features.main.profile.presentation.friends.FriendsFragment"
+        android:label="fragment_friends"
+        tools:layout="@layout/fragment_friends" >
+        <action
+            android:id="@+id/action_friendsFragment_to_friendRequestsFragment"
+            app:destination="@id/friendRequestsFragment" />
+        <action
+            android:id="@+id/action_friendsFragment_to_addFriendDialog"
+            app:destination="@id/addFriendDialog" />
+        <action
+            android:id="@+id/action_friendsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendRequestsFragment"
+        android:name="com.example.students.features.main.profile.presentation.requests.FriendRequestsFragment"
+        android:label="fragment_friend_requests"
+        tools:layout="@layout/fragment_friend_requests" />
+    <fragment
+        android:id="@+id/addFriendDialog"
+        android:name="com.example.students.features.main.profile.presentation.friends.AddFriendFragment"
+        android:label="dialog_add_friend"
+        tools:layout="@layout/fragment_add_friend" />
 </navigation>
