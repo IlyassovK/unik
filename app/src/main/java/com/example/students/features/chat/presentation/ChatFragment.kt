@@ -1,4 +1,4 @@
-package com.example.students.features.chat.presentation.dialoglist
+package com.example.students.features.chat.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,8 +13,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.students.R
 import com.example.students.databinding.FragmentChatBinding
-import com.example.students.features.chat.presentation.ChatViewModel
 import com.example.students.features.chat.presentation.dialog.DialogFragment.Companion.DIALOG_INFO
+import com.example.students.features.chat.presentation.dialoglist.DialogsAdapter
+import com.example.students.features.chat.presentation.dialoglist.DialogsState
 import com.example.students.utils.observeEvent
 import com.example.students.utils.onTextChanged
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

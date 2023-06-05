@@ -23,7 +23,7 @@ data class Message(
 data class TestMessage(
     val message: String,
     val message_created_at: String,
-    val my_message: Boolean,
+    val sender_id: Int,
 )
 
 fun TestMessage.parse(): Message {
@@ -31,7 +31,7 @@ fun TestMessage.parse(): Message {
         messageId = null,
         messageText = this.message,
         timeCreated = this.message_created_at.convert(),
-        type = this.my_message,
+        type = (sender_id == 18),
         timeUpdated = null
     )
 }
