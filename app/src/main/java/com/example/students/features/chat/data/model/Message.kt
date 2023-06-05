@@ -26,12 +26,12 @@ data class TestMessage(
     val sender_id: Int,
 )
 
-fun TestMessage.parse(): Message {
+fun TestMessage.parse(id: Int): Message {
     return Message(
         messageId = null,
         messageText = this.message,
         timeCreated = this.message_created_at.convert(),
-        type = (sender_id == 18),
+        type = (sender_id == id),
         timeUpdated = null
     )
 }

@@ -17,6 +17,7 @@ import com.example.students.features.chat.data.model.DialogResponse
 import com.example.students.features.chat.presentation.ChatViewModel
 import com.example.students.features.chat.presentation.WebSocketListenerDialog
 import com.example.students.features.chat.presentation.dialoglist.ChatState
+import com.example.students.utils.GlobalPreferences
 import com.example.students.utils.observeEvent
 import com.example.students.utils.setSafeOnClickListener
 import com.google.gson.Gson
@@ -24,6 +25,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.concurrent.TimeUnit
 
@@ -33,6 +35,7 @@ class DialogFragment : Fragment() {
     private lateinit var webSocketListener: WebSocketListenerDialog
 
     private var _webSocket: WebSocket? = null
+    private val prefs: GlobalPreferences by inject()
 
     private val socketOkHttpClient = OkHttpClient.Builder()
         .connectTimeout(timeout, TimeUnit.MILLISECONDS)
@@ -53,7 +56,7 @@ class DialogFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        webSocketListener = WebSocketListenerDialog {
+        webSocketListener = WebSocketListenerDialog(id = prefs.getUserId().toInt()) {
             requireActivity().runOnUiThread(Runnable {
                 Log.d("TEST KRM", "message $it")
                 messageAdapter.setMessage(it)

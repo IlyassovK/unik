@@ -1,14 +1,17 @@
 package com.example.students.features.chat.presentation
 
 import android.util.Log
-import com.example.students.features.chat.data.model.*
+import com.example.students.features.chat.data.model.Message
+import com.example.students.features.chat.data.model.TestMessage
+import com.example.students.features.chat.data.model.WebSocketResponse
+import com.example.students.features.chat.data.model.parse
 import com.example.students.utils.removeQuotesAndUnescape
 import com.google.gson.Gson
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 
-class WebSocketListenerDialog(val onMessage: (message: Message) -> Unit) : WebSocketListener() {
+class WebSocketListenerDialog(private val id: Int, val onMessage: (message: Message) -> Unit) : WebSocketListener() {
 
     private val TAG = "Test"
 
@@ -32,7 +35,7 @@ class WebSocketListenerDialog(val onMessage: (message: Message) -> Unit) : WebSo
         val response = Gson().fromJson(text, WebSocketResponse::class.java)
         if (response.channel.equals("chatMessage") && response.data != null) {
             val message = Gson().fromJson(response.data, TestMessage::class.java)
-            onMessage.invoke(message.parse())
+            onMessage.invoke(message.parse(id))
             Log.d(TAG + "MESSAGE", "onMessage: $texts")
         }
     }
