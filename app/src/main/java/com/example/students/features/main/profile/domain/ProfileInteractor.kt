@@ -5,6 +5,7 @@ import com.example.students.features.main.profile.data.model.FriendsResponse
 import com.example.students.features.main.profile.data.model.MeResponse
 import com.example.students.features.main.profile.data.repository.ProfileRepository
 import com.example.students.utils.Resource
+import okhttp3.MultipartBody
 
 class ProfileInteractor(
     private val repository: ProfileRepository,
@@ -32,5 +33,9 @@ class ProfileInteractor(
 
     suspend fun findByName(name: String): Resource<FindFriendResponse> {
         return repository.findByName(name)
+    }
+
+    suspend fun uploadImage(part: MultipartBody.Part) {
+        return repository.uploadImage(part)
     }
 }

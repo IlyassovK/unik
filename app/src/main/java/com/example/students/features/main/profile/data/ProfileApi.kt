@@ -4,6 +4,7 @@ import com.example.students.features.main.profile.data.model.FindFriendResponse
 import com.example.students.features.main.profile.data.model.FriendRequest
 import com.example.students.features.main.profile.data.model.FriendsResponse
 import com.example.students.features.main.profile.data.model.MeResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -30,4 +31,10 @@ interface ProfileApi {
 
     @GET("/api/user")
     suspend fun findByName(@Query("filter[name]") name: String): Response<FindFriendResponse>
+
+    @Multipart
+    @POST("/api/user/uploadAvatar")
+    suspend fun uploadPicture(
+        @Part part: MultipartBody.Part,
+    )
 }

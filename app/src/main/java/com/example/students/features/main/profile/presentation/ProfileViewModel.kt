@@ -8,6 +8,11 @@ import com.example.students.utils.isSuccessful
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.InputStream
 
 class ProfileViewModel(
     private val interactor: ProfileInteractor,
@@ -26,6 +31,18 @@ class ProfileViewModel(
             } else {
                 _state.emit(ProfileState.ErrorLoaded)
             }
+        }
+    }
+
+    fun upload(inputStream: InputStream) {
+        viewModelScope.launch {
+            val part = MultipartBody.Part.createFormData(
+                "pic", "myPic", RequestBody.create(
+                    "image/*".toMediaTypeOrNull(),
+                    inputStream.readBytes()
+                )
+            )
+            interactor.uploadImage(part)
         }
     }
 }

@@ -9,6 +9,7 @@ import com.example.students.features.main.profile.data.repository.ProfileReposit
 import com.example.students.utils.GlobalPreferences
 import com.example.students.utils.Resource
 import com.example.students.utils.exceptions.NetworkExceptions
+import okhttp3.MultipartBody
 
 class ProfileRepositoryImpl(
     private val api: ProfileApi,
@@ -100,6 +101,13 @@ class ProfileRepositoryImpl(
             }
         } catch (e: Exception) {
             Resource.error(NetworkExceptions.BadRequest("Exception during finding friends by id"))
+        }
+    }
+
+    override suspend fun uploadImage(part: MultipartBody.Part) {
+        try {
+            val result = api.uploadPicture(part)
+        } catch (e: Exception) {
         }
     }
 }

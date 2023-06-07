@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.feedFragment || destination.id == R.id.chatFragment
-                || destination.id == R.id.mapFragment || destination.id == R.id.contactsFragment
+                || destination.id == R.id.mapFragment || destination.id == R.id.contactsFragment || destination.id == R.id.profileFragment
             ) {
                 binding.navView.visibility = View.VISIBLE
             } else {

@@ -10,55 +10,57 @@
         android:layout_marginHorizontal="0dp"
         android:fitsSystemWindows="true">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/branch__title_ll"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
+            android:layout_height="?android:attr/actionBarSize"
+            android:animateLayoutChanges="true"
+            app:cardBackgroundColor="@color/colorToolbarBackgroundDarkNew"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/map_title"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:text="@string/main_screen_map" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/add_point_btn"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_circle_btn"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@drawable/ic_add"
-                />
-            <ToggleButton
-                android:id="@+id/branch__title__tgl"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="0dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:button="@drawable/selector__bank_map__title_tgl"
-                android:clickable="true"
-                android:focusable="true"
-                android:textOff=""
-                android:textOn="" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextViewTitleLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_screen_map"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ToggleButton
+                    android:id="@+id/branch__title__tgl"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@drawable/selector__bank_map__title_tgl"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:textOff=""
+                    android:textOn="" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <com.yandex.mapkit.mapview.MapView
             android:id="@+id/mapview"
@@ -68,20 +70,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/branch__title_ll"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/map_info_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/branch__title_ll">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/branch_type_scroll_container" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <HorizontalScrollView
                 android:id="@+id/branch_type_scroll_container"

@@ -9,7 +9,6 @@ import android.graphics.*
 import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.students.R
 import com.example.students.databinding.FragmentMapBinding
 import com.example.students.features.main.map.BottomDialog
-import com.example.students.features.main.map.CreatePointBottomDialog
 import com.example.students.features.main.map.presentation.model.MapLocations
 import com.example.students.features.map.RegionItem
 import com.example.students.features.map.Regions
@@ -35,7 +33,6 @@ import com.example.students.utils.setSafeOnClickListener
 import com.example.students.utils.ui.ToggleOnlyProgrammaticallyWrapper
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.yandex.mapkit.Animation
-import com.yandex.mapkit.GeoObjectCollection
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Geo
 import com.yandex.mapkit.geometry.Point
@@ -213,13 +210,6 @@ class MapFragment : Fragment(), UserLocationObjectListener, ClusterListener,
         setElementActionsListeners()
 
         checkStartPermissions()
-
-        binding.addPointBtn.visibility = View.GONE
-        binding.addPointBtn.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_mapFragment_to_createPointBottomDialog
-            )
-        }
 
         binding.mapview.map.addInputListener(this)
 

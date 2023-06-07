@@ -75,6 +75,7 @@ dependencies {
     //ui
     implementation 'androidx.autofill:autofill:1.1.0'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
     //map
     // Облегченная библиотека, содержит только карту, слой пробок,
     // LocationManager, UserLocationLayer и возможность скачивать офлайн-карты (только в платной версии).

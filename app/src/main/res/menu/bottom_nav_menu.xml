@@ -8,15 +8,20 @@
 
     <item
         android:id="@+id/chatFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/icv_chat"
         android:title="@string/main_screen_messenger" />
 
     <item
         android:id="@+id/contactsFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/icv_contacts"
         android:title="@string/main_screen_contact" />
     <item
         android:id="@+id/mapFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/icv_map"
         android:title="@string/main_screen_map" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/icv_profile"
+        android:title="@string/main_screen_profile" />
 </menu>

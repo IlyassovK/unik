@@ -51,12 +51,6 @@ class FeedFragment : Fragment() {
     private fun initViews() {
         binding.apply {
 
-            mainUserAvatarBg.setOnClickListener {
-                findNavController().navigate(
-                    R.id.action_feedFragment_to_profileFragment
-                )
-            }
-
             toggleAll = ToggleOnlyProgrammaticallyWrapper(binding.branchTypeAll)
             toggleInfo = ToggleOnlyProgrammaticallyWrapper(binding.branchTypeInfo)
             toggleEnt = ToggleOnlyProgrammaticallyWrapper(binding.branchTypeEnt)

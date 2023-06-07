@@ -52,6 +52,17 @@
                 app:tint="#C3C8D5"
                 tools:ignore="contentDescription" />
 
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/TextViewTitleLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/profile_friends"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/backButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageButton
                 android:id="@+id/requestsButton"
                 android:layout_width="24dp"

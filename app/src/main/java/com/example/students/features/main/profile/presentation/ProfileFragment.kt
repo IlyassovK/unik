@@ -1,10 +1,10 @@
 package com.example.students.features.main.profile.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +16,6 @@ import com.example.students.databinding.FragmentProfileBinding
 import com.example.students.features.main.profile.presentation.model.ProfileState
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 
 class ProfileFragment : Fragment() {
@@ -32,6 +31,15 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    private val pickImagesLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            uri?.let {
+                val stream = requireContext().contentResolver.openInputStream(it)
+                viewModel.upload(stream!!)
+            }
+        }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -42,14 +50,14 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initViews() = with(binding) {
-        backButton.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
-        friendsContainer.setOnClickListener {
+        friendButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_profileFragment_to_friendsFragment
             )
+        }
+
+        avatarContainer.setOnClickListener {
+            pickImagesLauncher.launch("image/*")
         }
 
     }
@@ -93,8 +101,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showLoading(show: Boolean) = with(binding) {
-            progressBar.isVisible = show
-            contentContainer.isVisible = !show
+        progressBar.isVisible = show
+        contentContainer.isVisible = !show
     }
 
     private fun setAvatar(url: String) {
@@ -105,5 +113,9 @@ class ProfileFragment : Fragment() {
         if (!url.isNullOrBlank()) {
             Glide.with(requireContext()).load(url).apply(options).into(binding.avatar)
         }
+    }
+
+    companion object {
+        const val PICK_IMAGE = 1207
     }
 }
