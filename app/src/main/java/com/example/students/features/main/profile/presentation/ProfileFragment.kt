@@ -56,6 +56,12 @@ class ProfileFragment : Fragment() {
             )
         }
 
+        localeButton.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_profileFragment_to_languageDialog
+            )
+        }
+
         avatarContainer.setOnClickListener {
             pickImagesLauncher.launch("image/*")
         }

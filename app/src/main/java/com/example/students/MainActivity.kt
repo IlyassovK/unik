@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.students.databinding.ActivityMainBinding
+import com.example.students.features.LanguageDialog
+import com.example.students.utils.LocaleManager
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LanguageDialog.LangDialogListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -31,9 +33,32 @@ class MainActivity : AppCompatActivity() {
                 binding.navView.visibility = View.GONE
             }
         }
+
+        LocaleManager.overrideLocale(this)
+
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        val newContext = LocaleManager.wrapContext(newBase)
+        super.attachBaseContext(newContext)
+    }
+
+    fun switchLanguage(language: LocaleManager.SupportedLanguages) {
+        LocaleManager.switchLanguage(this, language)
+        restart()
+    }
+
+    private fun restart() {
+        recreate()
+        finish()
+        startActivity(intent)
     }
 
     companion object {
         fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
+    }
+
+    override fun onLanguageSelected(lang: LocaleManager.SupportedLanguages) {
+        switchLanguage(lang)
     }
 }

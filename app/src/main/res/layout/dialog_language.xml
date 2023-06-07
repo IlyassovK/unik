@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="36dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bottom_dialog_spot_view"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingStart="8dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="26dp">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            style="@style/TextViewTitleLight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:gravity="start"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="@+id/icon_close"
+            app:layout_constraintEnd_toStartOf="@+id/icon_close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/icon_close"
+            tools:text="Выбор языка" />
+
+        <ImageView
+            android:id="@+id/icon_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/first_container"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginEnd="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/first_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_kzt" />
+
+        <TextView
+            android:id="@+id/first_title"
+            style="@style/TextViewRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:gravity="start"
+            android:includeFontPadding="false"
+            android:paddingStart="0dp"
+            android:paddingEnd="16dp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/first_icon"
+            app:layout_constraintEnd_toStartOf="@+id/first_check"
+            app:layout_constraintStart_toEndOf="@+id/first_icon"
+            app:layout_constraintTop_toTopOf="@+id/first_icon"
+            tools:text="Қазақ тілі" />
+
+        <ImageView
+            android:id="@+id/first_check"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icv_accept_circle"
+            android:visibility="gone"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/divider_list_user_settings" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/second_container"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginEnd="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/second_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_kzt" />
+
+        <TextView
+            android:id="@+id/second_title"
+            style="@style/TextViewRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:includeFontPadding="false"
+            android:paddingStart="0dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/second_icon"
+            app:layout_constraintEnd_toStartOf="@+id/second_check"
+            app:layout_constraintStart_toEndOf="@+id/second_icon"
+            app:layout_constraintTop_toTopOf="@+id/second_icon"
+            tools:text="Русский" />
+
+        <ImageView
+            android:id="@+id/second_check"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icv_accept_circle"
+            android:visibility="gone"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:visibility="visible"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/divider_list_user_settings" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/third_container"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginEnd="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/third_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_kzt" />
+
+        <TextView
+            android:id="@+id/third_title"
+            style="@style/TextViewRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:includeFontPadding="false"
+            android:paddingStart="0dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/third_icon"
+            app:layout_constraintEnd_toStartOf="@+id/third_check"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/third_icon"
+            app:layout_constraintTop_toTopOf="@+id/third_icon"
+            app:layout_constraintVertical_bias="0.529"
+            tools:text="English" />
+
+        <ImageView
+            android:id="@+id/third_check"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icv_accept_circle"
+            android:visibility="gone"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

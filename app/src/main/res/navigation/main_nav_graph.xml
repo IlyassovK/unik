@@ -83,6 +83,9 @@
         <action
             android:id="@+id/action_profileFragment_to_friendsFragment"
             app:destination="@id/friendsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_languageDialog"
+            app:destination="@id/languageDialog" />
     </fragment>
     <fragment
         android:id="@+id/friendsFragment"
@@ -109,4 +112,8 @@
         android:name="com.example.students.features.main.profile.presentation.friends.AddFriendFragment"
         android:label="dialog_add_friend"
         tools:layout="@layout/fragment_add_friend" />
+    <dialog
+        android:id="@+id/languageDialog"
+        android:name="com.example.students.features.LanguageDialog"
+        android:label="LanguageDialog" />
 </navigation>
