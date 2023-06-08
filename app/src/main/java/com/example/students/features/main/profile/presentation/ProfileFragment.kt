@@ -1,5 +1,6 @@
 package com.example.students.features.main.profile.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.students.MainActivity
 import com.example.students.R
 import com.example.students.databinding.FragmentProfileBinding
+import com.example.students.features.auth.AuthorizationActivity
 import com.example.students.features.main.profile.presentation.model.ProfileState
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -56,6 +59,13 @@ class ProfileFragment : Fragment() {
             )
         }
 
+        logout.setOnClickListener {
+            viewModel.logout()
+            val intent = AuthorizationActivity.getIntent(requireContext())
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+
         localeButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_profileFragment_to_languageDialog
@@ -65,8 +75,8 @@ class ProfileFragment : Fragment() {
         avatarContainer.setOnClickListener {
             pickImagesLauncher.launch("image/*")
         }
-
     }
+
 
     private fun setupObservers() {
         lifecycleScope.launchWhenCreated {
@@ -88,20 +98,23 @@ class ProfileFragment : Fragment() {
                 showLoading(false)
                 state.data.data.let {
                     var hobbies = ""
-                    it.hobbies.forEach { hobby ->
+                    it.hobbies?.forEach { hobby ->
                         hobbies += "${hobby.title} "
                     }
                     with(binding) {
                         nameEditText.setText(it.name)
                         phoneEditText.setText(it.phone)
                         emailEditText.setText(it.email)
-                        cityEditText.setText(it.city.title)
+                        cityEditText.setText(it.city?.title)
                         hobbyEditText.setText(hobbies)
-                        universityEditText.setText(it.university.title)
-                        specialityEditText.setText(it.speciality.title)
+                        universityEditText.setText(it.university?.title)
+                        specialityEditText.setText(it.speciality?.title)
                     }
                     setAvatar(it.avatar)
                 }
+            }
+            ProfileState.ProfileUpdated -> {
+
             }
         }
     }
@@ -111,7 +124,7 @@ class ProfileFragment : Fragment() {
         contentContainer.isVisible = !show
     }
 
-    private fun setAvatar(url: String) {
+    private fun setAvatar(url: String?) {
         val options: RequestOptions = RequestOptions()
             .centerCrop()
             .placeholder(R.drawable.ic_empty_avatar)

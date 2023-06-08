@@ -46,7 +46,7 @@ class CreatePostDialogFragment : BottomSheetDialogFragment() {
                             title = binding.titleEditText.text.toString(),
                             description = binding.descEditText.text.toString(),
                             body = binding.bodyEditText.text.toString(),
-                            ids = listOf(viewModel.createPostCategoryId)
+                            categories_ids = listOf(viewModel.createPostCategoryId)
                         )
                     )
                 } else {

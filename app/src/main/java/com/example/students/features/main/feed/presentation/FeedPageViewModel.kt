@@ -79,6 +79,12 @@ class FeedPageViewModel(
         }
     }
 
+    fun saveDeviceToken(token: String){
+        viewModelScope.launch {
+            feedUseCase.saveDeviceToken(token)
+        }
+    }
+
     private fun getAllCategories() {
         viewModelScope.launch {
             val result = feedUseCase.getAllCategories()

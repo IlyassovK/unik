@@ -50,6 +50,21 @@ class GlobalPreferences {
         preferences.edit().putBoolean(IS_FIRST_LAUNCH, false).apply()
     }
 
+    fun saveDeviceToken(token: String) {
+        preferences.edit().putString(DEVICE_TOKEN, token).apply()
+    }
+
+    fun getDeviceToken(): String {
+        return preferences.getString(DEVICE_TOKEN, "") ?: ""
+    }
+
+    fun clear() {
+        setAccessToken("")
+        setUserId(0)
+        setUserPhone("")
+        preferences.edit().putBoolean(IS_AUTHORIZED, true).apply()
+    }
+
     companion object {
         const val PREF_NAME = "preferences"
         const val IS_FIRST_LAUNCH = "is_first_launch"
@@ -57,5 +72,6 @@ class GlobalPreferences {
         const val KEY_USER_PHONE = "phone_number"
         const val KEY_USER_ID = "phone_number"
         const val IS_AUTHORIZED = "is_authorized"
+        const val DEVICE_TOKEN = "device_token"
     }
 }

@@ -33,4 +33,7 @@ class FeedPageUseCase(
         return repository.getAllCategories()
     }
 
+    suspend fun saveDeviceToken(token: String){
+        repository.saveDeviceToken(token)
+    }
 }

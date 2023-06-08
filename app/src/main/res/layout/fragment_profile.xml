@@ -102,6 +102,18 @@
 
 
             <TextView
+                android:id="@+id/logout"
+                style="@style/TextViewRegularLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/profile_logout"
+                android:textColor="@color/color_error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/localeButton" />
+
+            <TextView
                 android:id="@+id/userInfoTitle"
                 style="@style/TextViewSubTitleLight"
                 android:layout_width="wrap_content"
@@ -111,7 +123,7 @@
                 android:text="@string/profile_additional_information"
                 android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/localeButton" />
+                app:layout_constraintTop_toBottomOf="@id/logout" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameTextInputLayout"
@@ -145,6 +157,7 @@
                     android:id="@+id/nameEditText"
                     style="@style/MainEditText"
                     android:layout_width="match_parent"
+                    android:enabled="false"
                     android:layout_height="match_parent"
                     android:inputType="textPersonName"
                     android:paddingHorizontal="16dp"
@@ -185,6 +198,7 @@
                     style="@style/MainEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:enabled="false"
                     android:inputType="textPersonName"
                     android:paddingHorizontal="16dp"
                     android:textColor="@color/black" />
@@ -225,6 +239,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPersonName"
+                    android:enabled="false"
                     android:paddingHorizontal="16dp"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -262,6 +277,7 @@
                     style="@style/MainEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:enabled="false"
                     android:inputType="textPersonName"
                     android:paddingHorizontal="16dp"
                     android:textColor="@color/black" />
@@ -299,6 +315,7 @@
                     android:id="@+id/hobbyEditText"
                     style="@style/MainEditText"
                     android:layout_width="match_parent"
+                    android:enabled="false"
                     android:layout_height="match_parent"
                     android:inputType="textPersonName"
                     android:paddingHorizontal="16dp"
@@ -338,6 +355,7 @@
                     style="@style/MainEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:enabled="false"
                     android:inputType="textPersonName"
                     android:paddingHorizontal="16dp"
                     android:textColor="@color/black" />
@@ -375,6 +393,7 @@
                     android:id="@+id/specialityEditText"
                     style="@style/MainEditText"
                     android:layout_width="match_parent"
+                    android:enabled="false"
                     android:layout_height="match_parent"
                     android:inputType="textPersonName"
                     android:paddingHorizontal="16dp"

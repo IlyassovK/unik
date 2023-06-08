@@ -47,6 +47,8 @@ data class User(
     val updated_at: String?,
     @SerializedName("uuid")
     val uuid: String?,
+    @SerializedName("avatar")
+    val avatar: String?,
 ): Parcelable
 
 @Parcelize

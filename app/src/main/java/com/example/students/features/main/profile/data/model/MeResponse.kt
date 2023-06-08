@@ -12,26 +12,26 @@ data class MeResponse(
 ) {
     data class Data(
         @SerializedName("access_token")
-        val accessToken: String,
+        val accessToken: String?,
         @SerializedName("avatar")
-        val avatar: String,
+        val avatar: String?,
         @SerializedName("birth_date")
-        val birthDate: String,
+        val birthDate: String?,
         @SerializedName("city")
-        val city: City,
+        val city: City?,
         @SerializedName("email")
-        val email: String,
+        val email: String?,
         @SerializedName("hobbies")
-        val hobbies: List<Hobby>,
+        val hobbies: List<Hobby>?,
         @SerializedName("id")
-        val id: Int,
+        val id: Int?,
         @SerializedName("name")
-        val name: String,
+        val name: String?,
         @SerializedName("phone")
-        val phone: String,
+        val phone: String?,
         @SerializedName("speciality")
-        val speciality: Speciality,
+        val speciality: Speciality?,
         @SerializedName("university")
-        val university: University,
+        val university: University?,
     )
 }

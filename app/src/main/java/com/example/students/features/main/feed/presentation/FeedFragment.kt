@@ -1,6 +1,7 @@
 package com.example.students.features.main.feed.presentation
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +16,21 @@ import com.example.students.R
 import com.example.students.databinding.FragmentFeedBinding
 import com.example.students.features.main.feed.presentation.PostFragment.Companion.ARG_POST
 import com.example.students.features.main.feed.presentation.model.FeedState
-import com.example.students.utils.setSafeOnClickListener
+import com.example.students.utils.GlobalPreferences
 import com.example.students.utils.ui.ToggleOnlyProgrammaticallyWrapper
+import com.google.android.gms.tasks.*
+import com.google.firebase.messaging.FirebaseMessaging
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
 
 class FeedFragment : Fragment() {
     private lateinit var binding: FragmentFeedBinding
     private val viewModel: FeedPageViewModel by sharedViewModel()
 
     private lateinit var adapter: FeedRecyclerViewAdapter
+
+    private val prefs: GlobalPreferences by inject()
 
     private lateinit var filter: Filter
     private lateinit var toggleAll: ToggleOnlyProgrammaticallyWrapper
@@ -46,6 +53,16 @@ class FeedFragment : Fragment() {
         initViews()
         setElementActionsListeners()
         setupObservers()
+
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { token: String ->
+            if (!TextUtils.isEmpty(token)) {
+                viewModel.saveDeviceToken(token)
+            } else {
+            }
+        }.addOnFailureListener { e: Exception? -> }.addOnCanceledListener {}
+            .addOnCompleteListener { task: Task<String> ->
+
+            }
     }
 
     private fun initViews() {

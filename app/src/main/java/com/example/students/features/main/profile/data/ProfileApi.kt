@@ -33,8 +33,11 @@ interface ProfileApi {
     suspend fun findByName(@Query("filter[name]") name: String): Response<FindFriendResponse>
 
     @Multipart
-    @POST("/api/user/uploadAvatar")
+    @POST("/api/user/uploadAvatar/")
     suspend fun uploadPicture(
         @Part part: MultipartBody.Part,
     )
+
+    @GET("/api/auth/logout")
+    suspend fun logout()
 }

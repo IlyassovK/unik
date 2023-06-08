@@ -108,6 +108,11 @@ class ProfileRepositoryImpl(
         try {
             val result = api.uploadPicture(part)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
+    }
+
+    override suspend fun logout() {
+        api.logout()
     }
 }

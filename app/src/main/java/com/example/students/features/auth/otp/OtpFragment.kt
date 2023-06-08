@@ -1,5 +1,6 @@
 package com.example.students.features.auth.otp
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -83,6 +84,7 @@ class OtpFragment : Fragment() {
                         .show()
 
                     val intent = MainActivity.getIntent(requireContext())
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                 }
                 OtpScreenState.RegistrationSuccess -> {

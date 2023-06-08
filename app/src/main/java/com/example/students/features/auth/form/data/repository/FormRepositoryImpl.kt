@@ -19,12 +19,12 @@ class FormRepositoryImpl(
 
     override suspend fun updateProfile(
         profileRequest: ProfileRequest,
-    ): Resource<ProfileResponse> {
+    ): Resource<Boolean> {
         return try {
             val result = formApi.updateProfile(
                 profileRequest = profileRequest
             )
-            return Resource.success(result)
+            return Resource.success(result.code() == 200)
         } catch (e: Exception) {
             Resource.error(NetworkExceptions.BadRequest("Exception during registration"))
         }

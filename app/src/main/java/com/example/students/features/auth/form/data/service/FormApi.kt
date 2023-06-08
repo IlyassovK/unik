@@ -3,6 +3,7 @@ package com.example.students.features.auth.form.data.service
 import com.example.students.features.auth.form.data.model.FormDataResponse
 import com.example.students.features.auth.form.data.model.ProfileRequest
 import com.example.students.features.auth.form.data.model.ProfileResponse
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -13,7 +14,7 @@ interface FormApi {
     @POST("/api/user/profile")
     suspend fun updateProfile(
         @Body profileRequest: ProfileRequest,
-    ): ProfileResponse
+    ): Response<String>
 
     @GET("/api/university/index")
     suspend fun getUniversities(): FormDataResponse

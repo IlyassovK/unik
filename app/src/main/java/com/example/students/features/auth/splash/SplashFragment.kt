@@ -1,5 +1,6 @@
 package com.example.students.features.auth.splash
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,6 +31,7 @@ class SplashFragment : Fragment() {
 
         if (prefs.isAuthorized()) {
             val intent = MainActivity.getIntent(requireContext())
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         } else {
             if (prefs.isFirstLaunch()) {

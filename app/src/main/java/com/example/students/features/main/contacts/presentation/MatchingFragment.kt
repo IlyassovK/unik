@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.students.R
 import com.example.students.databinding.FragmentContactsBinding
 import com.example.students.features.main.contacts.data.model.MatchingResponse
 import com.example.students.features.main.contacts.presentation.model.MatchingState
@@ -61,13 +65,13 @@ class MatchingFragment : Fragment() {
                         universityDivider.isVisible = false
                         speciality.isVisible = false
                         hobbies.isVisible = false
+                        avatarImage.isVisible = false
                     }
                     is MatchingState.PersonLoaded -> {
                         shimmerViewContainer.hideShimmer()
 
                         viewModel.currentMatchingUserId = state.data.user?.id?.toLong() ?: 0
                         onPersonLoaded(state.data)
-
                     }
                 }
             }
@@ -97,7 +101,19 @@ class MatchingFragment : Fragment() {
                 }
             }
 
+            val circularProgressDrawable = CircularProgressDrawable(requireContext())
+            circularProgressDrawable.strokeWidth = 5f
+            circularProgressDrawable.centerRadius = 30f
+            circularProgressDrawable.start()
 
+            val options: RequestOptions = RequestOptions()
+                .centerCrop()
+                .placeholder(circularProgressDrawable)
+                .error(R.drawable.ic_empty_avatar)
+            if (!data.user.avatar.isNullOrBlank()) {
+                Glide.with(requireContext()).load(data.user.avatar).apply(options)
+                    .into(binding.avatarImage)
+            }
             name.text = data.user.name
             city.text = data.user.city?.title
             university.text = data.user.university?.title

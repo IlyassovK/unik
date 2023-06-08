@@ -5,14 +5,14 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.util.Log
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import com.example.students.R
+import com.example.students.utils.GlobalPreferences
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import kotlin.random.Random
+import org.koin.android.ext.android.inject
 
 class NotificationService : FirebaseMessagingService() {
+    private val prefs: GlobalPreferences by inject()
+
     private lateinit var channel: NotificationChannel
 
     private val mNotificationManager by lazy { getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }

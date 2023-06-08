@@ -83,5 +83,7 @@
     <string name="dialog_settings_interface_lang_ru" translatable="false">Русский</string>
     <string name="dialog_settings_interface_lang_en" translatable="false">English</string>
     <string name="dialog_settings_interface_lang">Language selection</string>
+    <string name="profile_logout">logout</string>
+    <string name="profile_update">Update</string>
 
 </resources>

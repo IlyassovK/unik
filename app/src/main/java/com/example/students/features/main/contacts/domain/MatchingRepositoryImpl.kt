@@ -18,7 +18,7 @@ class MatchingRepositoryImpl(
                 return Resource.error(NetworkExceptions.BadRequest("Operation is unsuccessful"))
             }
         } catch (e: Exception) {
-            Resource.error(NetworkExceptions.BadRequest("Exception during get all post"))
+            Resource.error(NetworkExceptions.BadRequest("Exception during matching"))
         }
     }
 

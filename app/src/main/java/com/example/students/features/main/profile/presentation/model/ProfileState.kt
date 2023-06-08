@@ -6,4 +6,5 @@ sealed class ProfileState {
     object Loading : ProfileState()
     object ErrorLoaded : ProfileState()
     data class Success(val data: MeResponse) : ProfileState()
+    object ProfileUpdated : ProfileState()
 }

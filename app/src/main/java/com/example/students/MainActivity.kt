@@ -11,6 +11,10 @@ import com.example.students.databinding.ActivityMainBinding
 import com.example.students.features.LanguageDialog
 import com.example.students.utils.LocaleManager
 
+//todo
+// 1. Комментарии в ленте
+// 2. Форма UI UX
+
 class MainActivity : AppCompatActivity(), LanguageDialog.LangDialogListener {
 
     private lateinit var binding: ActivityMainBinding

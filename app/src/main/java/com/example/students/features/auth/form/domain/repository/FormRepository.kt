@@ -7,7 +7,7 @@ import com.example.students.utils.Resource
 
 interface FormRepository {
 
-    suspend fun updateProfile(profileRequest: ProfileRequest): Resource<ProfileResponse>
+    suspend fun updateProfile(profileRequest: ProfileRequest): Resource<Boolean>
 
     suspend fun getAllUniversities(): Resource<List<FormData>>
     suspend fun getAllSpecialities(): Resource<List<FormData>>

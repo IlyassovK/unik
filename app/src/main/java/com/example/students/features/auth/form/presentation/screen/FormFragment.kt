@@ -1,5 +1,6 @@
 package com.example.students.features.auth.form.presentation.screen
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -134,6 +135,7 @@ class FormFragment : Fragment(R.layout.fragment_form) {
             }
             FormScreenState.Success -> {
                 val intent = MainActivity.getIntent(requireContext())
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
         }

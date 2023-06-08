@@ -12,7 +12,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val profileModule = module {
-    viewModel { ProfileViewModel(interactor = get()) }
+    viewModel { ProfileViewModel(interactor = get(), prefs = get(), updateProfileUseCase = get()) }
     viewModel { FriendsViewModel(interactor = get()) }
     viewModel { RequestsViewModel(interactor = get()) }
 

@@ -26,7 +26,7 @@ class LanguageDialog : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = DialogLanguageBinding.inflate(inflater, container, false)
         return binding.root
     }

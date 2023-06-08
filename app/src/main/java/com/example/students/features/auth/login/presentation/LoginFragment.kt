@@ -1,8 +1,8 @@
 package com.example.students.features.auth.login.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -12,10 +12,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.students.MainActivity
 import com.example.students.R
 import com.example.students.databinding.FragmentLoginBinding
-import com.example.students.features.auth.AuthType
 import com.example.students.features.auth.AuthViewModel
 import com.example.students.utils.ui.PhoneTextWatcher
-import kotlinx.coroutines.MainScope
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -87,6 +85,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 Toast.makeText(requireContext(), "Success Login", Toast.LENGTH_SHORT).show()
 
                 val intent = MainActivity.getIntent(requireContext())
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
             is LoginScreenState.ErrorLoaded -> {

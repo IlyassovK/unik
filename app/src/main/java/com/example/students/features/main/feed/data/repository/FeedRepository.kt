@@ -17,4 +17,6 @@ interface FeedRepository {
     suspend fun likePost(id: String): Resource<LikeResponse>
 
     suspend fun getAllCategories(): Resource<List<Category>>
+
+    suspend fun saveDeviceToken(token: String)
 }

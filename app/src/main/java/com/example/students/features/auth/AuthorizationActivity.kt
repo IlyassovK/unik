@@ -1,5 +1,7 @@
 package com.example.students.features.auth
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.students.databinding.ActivityAuthorizationBinding
@@ -12,5 +14,9 @@ class AuthorizationActivity : AppCompatActivity() {
 
         binding = ActivityAuthorizationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    companion object {
+        fun getIntent(context: Context): Intent = Intent(context, AuthorizationActivity::class.java)
     }
 }

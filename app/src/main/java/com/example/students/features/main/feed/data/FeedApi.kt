@@ -1,6 +1,7 @@
 package com.example.students.features.main.feed.data
 
 import com.example.students.features.main.feed.data.model.*
+import com.example.students.features.main.feed.presentation.model.DeviceTokenRequest
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -23,4 +24,7 @@ interface FeedApi {
 
     @GET("/api/post/category/list")
     suspend fun getAllCategories(): Response<CategoryResponse>
+
+    @POST("/api/user/saveDeviceToken")
+    suspend fun saveDeviceToken(@Body body: DeviceTokenRequest)
 }

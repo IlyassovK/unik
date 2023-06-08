@@ -4,5 +4,5 @@ data class CreatePostRequest(
     val body: String,
     val description: String,
     val title: String,
-    var ids: List<Int>
+    var categories_ids: List<Int>
 )

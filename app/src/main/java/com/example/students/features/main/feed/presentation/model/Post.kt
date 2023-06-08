@@ -12,13 +12,11 @@ data class Post(
     val authorName: String,
     val body: String,
     val comments: List<CommentResponse>,
-    val createdAt: String,
     val description: String,
     val id: Int,
     val title: String,
-    val updatedAt: String,
     val isLiked: Boolean,
     val isSaved: Boolean,
     val likedUsers: List<User>,
     val userId: Int,
-): Parcelable
+) : Parcelable

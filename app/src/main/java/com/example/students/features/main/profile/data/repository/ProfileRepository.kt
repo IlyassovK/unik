@@ -20,4 +20,6 @@ interface ProfileRepository {
     suspend fun findByName(name: String): Resource<FindFriendResponse>
 
     suspend fun uploadImage(part: MultipartBody.Part)
+
+    suspend fun logout()
 }

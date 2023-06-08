@@ -38,4 +38,8 @@ class ProfileInteractor(
     suspend fun uploadImage(part: MultipartBody.Part) {
         return repository.uploadImage(part)
     }
+
+    suspend fun logout() {
+        return repository.logout()
+    }
 }

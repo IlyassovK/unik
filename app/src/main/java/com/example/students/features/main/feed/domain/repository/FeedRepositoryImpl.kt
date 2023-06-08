@@ -4,10 +4,10 @@ import com.example.students.features.main.feed.data.FeedApi
 import com.example.students.features.main.feed.data.model.*
 import com.example.students.features.main.feed.data.repository.FeedRepository
 import com.example.students.features.main.feed.presentation.model.Category
+import com.example.students.features.main.feed.presentation.model.DeviceTokenRequest
 import com.example.students.features.main.feed.presentation.model.Post
 import com.example.students.utils.Resource
 import com.example.students.utils.exceptions.NetworkExceptions
-import retrofit2.Response
 
 class FeedRepositoryImpl(
     private val api: FeedApi,
@@ -76,6 +76,14 @@ class FeedRepositoryImpl(
             }
         } catch (e: Exception) {
             Resource.error(NetworkExceptions.BadRequest("Exception during getting categories"))
+        }
+    }
+
+    override suspend fun saveDeviceToken(token: String) {
+        try {
+            api.saveDeviceToken(DeviceTokenRequest(token))
+        }catch (e: Exception){
+            e.printStackTrace()
         }
     }
 }
