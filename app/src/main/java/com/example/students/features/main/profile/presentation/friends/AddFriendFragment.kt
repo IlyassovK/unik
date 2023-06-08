@@ -96,6 +96,7 @@ class AddFriendFragment : Fragment() {
         adapter = AddFriendsRecyclerViewAdapter(
             onEndIconClick = {
                 viewModel.createFriendRequest(it.id)
+                Toast.makeText(requireContext(), "Request created", Toast.LENGTH_SHORT).show()
             }
         )
         binding.recyclerView.adapter = adapter

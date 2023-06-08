@@ -4,12 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.students.databinding.ActivityMainBinding
 import com.example.students.features.LanguageDialog
 import com.example.students.utils.LocaleManager
+
 
 //todo
 // 1. Комментарии в ленте

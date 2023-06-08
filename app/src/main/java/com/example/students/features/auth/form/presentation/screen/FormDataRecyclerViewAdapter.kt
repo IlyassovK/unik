@@ -1,6 +1,7 @@
 package com.example.students.features.auth.form.presentation.screen
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.students.databinding.ItemFormDataBinding
@@ -27,11 +28,20 @@ class FormDataRecyclerViewAdapter(
         return dataSet.size
     }
 
+    var isSelected: Boolean = false
+
     override fun onBindViewHolder(holder: FormDataViewHolder, position: Int) {
         val data = dataSet[position]
         holder.binding.apply {
             text.text = data.title
             root.setOnClickListener {
+                if (!isSelected) {
+                    selectedImage.visibility = View.VISIBLE
+                    isSelected = true
+                } else {
+                    selectedImage.visibility = View.GONE
+                    isSelected = false
+                }
                 mClickListener.invoke(data)
             }
         }

@@ -62,7 +62,6 @@ class MatchingFragment : Fragment() {
                         name.isVisible = false
                         city.isVisible = false
                         university.isVisible = false
-                        universityDivider.isVisible = false
                         speciality.isVisible = false
                         hobbies.isVisible = false
                         avatarImage.isVisible = false
@@ -87,7 +86,6 @@ class MatchingFragment : Fragment() {
             name.isVisible = data.user.name != null
             city.isVisible = data.user.city != null
             university.isVisible = data.user.university != null
-            universityDivider.isVisible = university.isVisible
             speciality.isVisible = data.user.speciality != null
             hobbies.isVisible = data.user.hobbies != null
 

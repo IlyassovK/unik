@@ -61,6 +61,7 @@ class ProfileFragment : Fragment() {
 
         logout.setOnClickListener {
             viewModel.logout()
+            requireActivity().finish()
             val intent = AuthorizationActivity.getIntent(requireContext())
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".features.main.contacts.presentation.MatchingFragment">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -31,8 +32,8 @@
                 style="@style/TextViewTitleLight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/main_screen_contact"
                 android:layout_marginStart="16dp"
+                android:text="@string/main_screen_contact"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,11 +44,11 @@
         android:id="@+id/shimmer_view_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:shimmer_clip_to_children="true"
         app:layout_constraintBottom_toTopOf="@id/skipBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:shimmer_clip_to_children="true">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
@@ -64,82 +65,73 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/no_matching"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/no_matching_offers"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <ImageView
                     android:id="@+id/avatar_image"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/name"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    tools:text="Karim Ilyassov"
                     android:textStyle="bold"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toTopOf="@+id/city"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="Karim Ilyassov" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Almaty"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toTopOf="@+id/university"
-                    app:layout_constraintStart_toStartOf="@id/name" />
+                    app:layout_constraintStart_toStartOf="@id/name"
+                    tools:text="Almaty" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/university"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="IITU"
-                    app:layout_constraintBottom_toTopOf="@+id/hobbies"
-                    app:layout_constraintStart_toStartOf="@id/name" />
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/speciality"
+                    app:layout_constraintStart_toStartOf="@id/name"
+                    tools:text="IITU" />
 
                 <TextView
-                    android:visibility="gone"
-                    android:id="@+id/university_divider"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="|"
-                    app:layout_constraintBottom_toBottomOf="@id/university"
-                    app:layout_constraintStart_toEndOf="@id/university"
-                    app:layout_constraintTop_toTopOf="@id/university" />
-
-                <TextView
-                    android:visibility="gone"
                     android:id="@+id/speciality"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    tools:text="Software engineering"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@id/university"
-                    app:layout_constraintStart_toEndOf="@id/university_divider"
-                    app:layout_constraintTop_toTopOf="@id/university" />
+                    app:layout_constraintStart_toStartOf="@id/name"
+                    app:layout_constraintBottom_toTopOf="@id/hobbies"
+                    app:layout_constraintTop_toTopOf="@id/university"
+                    tools:text="Software engineering" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/hobbies"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:text="Coding, sport"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/university" />
             </androidx.constraintlayout.widget.ConstraintLayout>
